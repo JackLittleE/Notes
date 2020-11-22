@@ -1,0 +1,72 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs} % 花体字母
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	傅里叶变换 : \[ \mathscr{F}[f(t)] := \int_{-\infty}^{+\infty}f(t)e^{-i\omega t}\mathrm{d}t \]
+
+	傅里叶逆变换 : \[ \mathscr{F}^{-1}[F(\omega)] := \frac{1}{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{i\omega t}\mathrm{d}\omega \]
+
+	收敛条件 : 	
+	\begin{itemize}[leftmargin = 4em]
+		\item 狄利克雷条件
+		\item $ \int_{-\infty}^{+\infty}\left|f(t)\right|\mathrm{d}t < +\infty $
+	\end{itemize}
+
+	狄拉克函数 ($ \delta(t) := \frac{\mathrm{d}}{\mathrm{d}t}u(t) $):
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \int_{-\infty}^{+\infty}\delta(t)\mathrm{d}t = 1 $
+		\item $ \int_{-\infty}^{+\infty}\delta(t)f(t)\mathrm{d}t = f(t) $ \newline
+				$ \int_{-\infty}^{+\infty}\delta(t-t_0)f(t)\mathrm{d}t = f(t_0) $
+	\end{itemize}
+
+	卷积 ($ f_1(t) * f_2(t) := \int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\mathrm{d}\tau $):
+	\begin{itemize}[leftmargin = 4em]
+		\item $ f_1(t) * f_2(t) = f_2(t) * f_1(t) $
+		\item $ f_1(t) * [f_2(t) * f_3(t)] = [f_1(t) * f_2(t)] * f_3(t) $
+		\item $ f_1(t) * [f_2(t) + f_3(t)] = f_1(t) * f_2(t) + f_1(t) * f_3(t) $
+		\item $ |f_1(t) *  f_2(t)| \leq |f_1(t)| * |f_2(t)| $
+		\end{itemize}
+
+	性质 ($ F(\omega) := \mathscr{F}[f(t)] $): 
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \mathscr{F}[\alpha f(t) + \beta g(t)] = \alpha\mathscr{F}[f(t)] + \beta\mathscr{F}[g(t)] $
+		\item $ \mathscr{F}[f(t \pm t_0)] = e^{\pm i\omega t_0}\mathscr{F}[f(t)] $
+		\item $ \mathscr{F}^{-1}[F(\omega \pm \omega_0)] = e^{\mp i\omega_0 t}\mathscr{F}^{-1}[F(\omega)] $
+		\item $ \mathscr{F}[f(at)] = \frac{1}{|a|} F(\frac{\omega}{a})$
+		\item $ \mathscr{F}[f'(t)] = i\omega\mathscr{F}[f(t)] $, while $ \lim\limits_{|t| \to +\infty}f(t) = 0 $ \newline
+				$ \mathscr{F}[f^{(n)}(t)] = (i\omega)^{n}\mathscr{F}[f(t)] $, while $ \lim\limits_{|t| \to +\infty}f^{(k)}(t) = 0 , k = 0, 1, \cdots, n-1 $ \newline
+				$ \mathscr{F}[tf(t)] = iF'(\omega) $ \newline
+				$ \mathscr{F}[t^{n}f(t)] = i^{n}F^{(n)}(\omega) $
+		\item $ \mathscr{F}[\int_{-\infty}^{t}f(\tau)\mathrm{d}\tau] = \frac{1}{i\omega}\mathscr{F}[f(t)] $, while $ \int_{-\infty}^{+\infty}f(t)\mathrm{d}t = 0 $
+		\item $ \int_{-\infty}^{+\infty}f_1(t)f_2(t)\mathrm{d}t = \frac{1}{2\pi}\int_{-\infty}^{+\infty}\overline{F_1(\omega)}F_2(\omega)\mathrm{d}\omega =  \frac{1}{2\pi}\int_{-\infty}^{+\infty}F_1(\omega)\overline{F_2(\omega)}\mathrm{d}\omega $ \newline
+				$ \int_{-\infty}^{+\infty}f^{2}(t)\mathrm{d}t = \frac{1}{2\pi}\int_{-\infty}^{+\infty}|F(\omega)|^{2}\mathrm{d}\omega $
+		\item $ \mathscr{F}[f_1(t) * f_2(t)] = F_1(\omega)F_2(\omega) $ \newline
+				$ \mathscr{F}^{-1}[F_1(\omega) * F_2(\omega)] = 2\pi f_1(t)f_2(t) $
+	\end{itemize}
+ 
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|}
+			\hline
+			$ f(t)$ & $ F(\omega) := \mathscr{F}[f(t)]$ \\ \hline
+			$ \begin{cases} E,& |t| \leq \frac{\tau}{2} \\ 0,& others \end{cases} $ & $ 2E\frac{\sin\frac{\omega\tau}{2}}{\omega} $ \\ \hline
+			$ \begin{cases} 0,& t < 0 \\ e^{\beta t},& t \geq 0 \end{cases}, (\beta > 0) $ & $ \frac{1}{\beta+i\omega} $ \\ \hline
+			$ \frac{\sin\omega_0t}{\pi t} $ & $ \begin{cases} 1,& |\omega| \leq \omega_0 \\ 0,& others \end{cases} $ \\ \hline
+			$ \delta(t) $ & $ 1 $ \\ \hline
+			$ \cos\omega_0t $ & $ \pi[\delta(\omega+\omega_0) + \delta(\omega-\omega_0)] $ \\ \hline
+			$ \sin\omega_0t $ & $ i\pi[\delta(\omega+\omega_0) - \delta(\omega-\omega_0)] $ \\ \hline
+			$ u(t) $ & $ \frac{1}{i\omega} + \pi\delta(\omega) $ \\ \hline
+			$ 1 $ & $ 2\pi\delta(\omega) $ \\ \hline
+			$ \frac{1}{a^{2}+t^{2}}, Re(a) < 0$ & $ -\frac{\pi}{a}e^{a|\omega|} $ \\ \hline
+		\end{tabular}
+	\end{table}
+
+\end{document}
