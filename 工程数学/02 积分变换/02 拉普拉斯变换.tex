@@ -1,0 +1,58 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs} % 花体字母
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+	
+	拉普拉斯变换 : \[ \mathscr{L}[f(t)] := \int_{0}^{+\infty}f(t)e^{-st}\mathrm{d}t \]	
+
+	拉普拉斯逆变换 : \[ \mathscr{L}^{-1}[f(t)] := \frac{1}{2\pi i}\int_{\beta-i\infty}^{\beta+i\infty}F(s)\mathrm{d}s \]
+
+	存在定理 : 
+	\begin{itemize}[leftmargin = 4em]
+		\item $ t \geq 0 $上分段连续
+		\item $ \exists M \geq 0, c \geq 0, |f(t)| \leq Me^{ct} $
+	\end{itemize}
+
+	性质 ($ F(s) := \mathscr{L}[f(t)] $) : 
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \mathscr{L}[\alpha f_1(t) + \beta f_2(t)] = \alpha\mathscr{L}[f_1(t)] + \beta\mathscr{L}[f_2(t)] $ \\
+				$ \mathscr{L}^{-1}[\alpha F_1(s) + \beta F_2(s)] = \alpha\mathscr{L}^{-1}[F_1(s)] + \beta\mathscr{L}^{-1}[F_2(s)] $
+		\item $ \mathscr{L}[f'(t)] = s\mathscr{L}[f(t)] - f(0) $ \\
+				$ \mathscr{L}[f^{(n)}(t)] = s^{n}\mathscr{L}[f(t)] - s^{n-1}f(0) - \cdots - f^{(n-1)}(0) $ \\
+				$ \mathscr{L}[-tf(t)] = F'(s) $
+				$ \mathscr{L}[(-t)^{n}f(t)] = F^{(n)}(s) $
+		\item $ \mathscr{L}[\int_{0}^{t}f(\tau)\mathrm{d}\tau] = \frac{1}{s}\mathscr{L}[f(t)] $ \\
+				$ \mathscr{L}[\frac{f(t)}{t}] = \int_0^{+\infty}\frac{f(t)}{t}e^{-st}\mathrm{d}t = \int_{s}^{+\infty}F(s)\mathrm{d}s $ \\
+				$ \int_{0}^{+\infty}\frac{f(t)}{t}\mathrm{d}t = \int_{0}^{+\infty}F(s)\mathrm{d}s $
+		\item $ \mathscr{L}[e^{at}f(t)] = F(s-a) $
+		\item $ \mathscr{L}{f(t-\tau)} = e^{s\tau}F(s) $ 
+	\end{itemize}
+
+	求逆变换 :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \mathscr{L}^{-1}[F(s)] = \sum Res[F(s)e^{st}, s_k] $
+		\item $ \mathscr{L}^{-1}[F(s)G(s)] = \mathscr{L}^{-1}[F(s)] * \mathscr{L}^{-1}[G(s)] $
+	\end{itemize}
+
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|}
+			\hline
+			$ f(t)$ & $ F(s) := \mathscr{L}[f(t)]$ \\ \hline
+			$ 1 $ & $ \frac{1}{s} $ \\ \hline
+			$ e^{at} $ & $ \frac{1}{s-a} $ \\ \hline
+			$ t^{m} $ & $ \frac{\Gamma(m+1)}{s^{m+1}} $ \\ \hline
+			$ \sin at $ & $ \frac{a}{s^{2}+a^{2}} $ \\ \hline
+			$ \cos at $ & $ \frac{s}{s^{2}+a^{2}} $ \\ \hline
+			$ \delta(t) $ & $ 1 $ \\ \hline
+		\end{tabular}
+	\end{table}
+
+\end{document}
