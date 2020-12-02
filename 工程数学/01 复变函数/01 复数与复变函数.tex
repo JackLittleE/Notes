@@ -1,0 +1,47 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+	
+	虚数单位$ i := \sqrt{-1} $
+
+	$ z := x + iy $为复数(x, y为实数). x为实部, y为虚部. $ \mathrm{Re}z := x, \mathrm{Im}z := y $
+
+	代数运算($ z_{1} := x_{1}+iy_{1}, z_{2} := x_{2}+iy_{2} $)
+	\begin{itemize}[leftmargin = 4em]
+		\item $ z_{1} \pm z_{2} = (x_{1} \pm x_{2}) + i(y_{1} \pm y_{2}) $
+		\item $ z_{1}z_{2} = (x_{1}x_{2}-y_{1}y{2}) + i(x_{1}y{2}+x_{2}y_{1}) $
+		\item $ \frac{z_{2}}{z_{1}} = \frac{(x_{1}x_{2}+y_{1}y_{2})+i(x_{1}y{2}-x_{2}y_{1})}{x_{1}^{2}+y_{1}^{2}} $, while $ z \ne 0 $
+	\end{itemize}
+
+	共轭复数$ \overline{z} := x - iy $
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \overline{z_{1} \pm z_{2}} = \overline{z_{1}} + \overline{z_{2}} $
+		\item $ \overline{\overline{z}} = z $
+		\item $ z\overline{z} = [\mathrm{Re}z]^{2} + [\mathrm{Im}z]^{2} $
+	\end{itemize}
+
+	模长 $ |z| := \sqrt{[\mathrm{Re}z]^{2} + [\mathrm{Im}z]^{2}} $
+
+	幅角 $ \mathrm{Arg}z = \arctan\frac{\mathrm{Im}z}{\mathrm{Re}z} + 2k\pi $
+
+	幅角主值 $ \arg z = \arctan\frac{\mathrm{Im}z}{\mathrm{Re}z} \in (-\pi, \pi] $
+
+	指数表达式 $ z := \rho e^{i\phi} $, $ \rho := |z|, \phi = \mathrm{Arg}z$
+
+	幂 $ z^{n} := \rho^{n}[\cos(n\phi) + i\sin(n\phi)] $
+
+	棣莫弗公式 $ (\cos\phi + i\sin\phi)^{n} = \cos(n\phi) + i\sin(n\phi) $
+
+	$ f(z) = u(x, y) + iv(x, y) , z_{0} := x_{0} + iy_{0} $
+	\begin{itemize}[leftmargin = 4em]
+		\item 极限 : $ \lim\limits_{z \to z_{0}}f(z) =  \lim\limits_{x \to x_{0} \\ y \to y_{0}}[u(x, y) + iv(x, y)] $
+		\item 连续 : $ \lim\limits_{z \to z_{0}}f(z) = f(z_{0}) $
+	\end{itemize}
+\end{document}

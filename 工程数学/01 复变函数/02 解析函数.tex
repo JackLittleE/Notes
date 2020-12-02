@@ -1,0 +1,36 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	导数 : $ f'(z_{0}) := \lim\limits_{\Delta z \to 0} \frac{f(z_0+\Delta z) - f(z_0)}{\Delta z} $
+
+	如果$ f(z) $ 在 $ z = z_{0} $ 可导, 那么$ f(z) $ 在 $ z = z_{0} $ 连续
+
+	解析 : $ f(z) $ 在 $ z_{0} $ 及其邻域内可导, 那么$ f(z) $ 在 $ z_{0} $ 解析
+
+	奇点 : $ f(z) $ 在 $ z_{0} $ 不解析, 称$ z_{0} $为$ f(z) $的奇点
+
+	柯西-黎曼方程 : $\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x} $,, 是函数解析的充要条件
+
+	$ f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} $
+
+	初等函数($ z : x + iy $):
+	\begin{itemize}[leftmargin = 4em]
+		\item 指数函数 : $ e^{z} := e^{x}(\cos y + i\sin y) , (e^{z})' = e^{z} $
+		\item 对数函数 : $ \mathrm{Ln}z := ln|z| + i\mathrm{Arg}z $
+		\item 对数函数的主值 : $ \ln z := ln|z| + i\arg z , (\ln z)' = \frac{1}{z}$, except $ \mathrm{Re}z \leq 0 $ and $ \mathrm{Im}z == 0 $
+		\item 幂函数 : $ z^{b} := e^{b\mathrm{Ln}z} $, (当 $ b $ 为整数的时候函数为单值函数), $ (z^{b})' = bz^{b-1} $
+		\item 正弦函数 : $ \sin z := \frac{e^{iz}-e^{-iz}}{2i} $, $ (\sin z)' = \cos z  $
+		\item 余弦函数 : $ \cos z := \frac{e^{iz}+e^{-iz}}{2} $, $ (\cos z)' = -\sin z $
+		\item 双曲正弦 : $ \mathrm{sh} z := \frac{e^{z}-e^{-z}}{2} $ , $ (\mathrm{sh}z)' = \mathrm{ch}z $
+		\item 双曲余弦 : $ \mathrm{ch} z := \frac{e^{z}+e^{-z}}{2} $ , $ (\mathrm{ch}z)' = \mathrm{sh}z $
+	\end{itemize}
+
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	$ f(z) := u(x, y) + iv(x, y) $, $ C $ 为光滑曲线
+
+	$ \int\limits_{C}f(z)\mathrm{d}z = \int\limits_{C}u\mathrm{d}x-v\mathrm{d}y + i \int\limits_{C}v\mathrm{d}x-u\mathrm{d}y $
+
+	柯西-古萨定理 : $ f(z) $ 在 $ D $内解析, $ C $ 为 $ D $内的一条正向闭曲线, 则 $ \oint\limits_{C}f(z)\mathrm{d}z = 0 $
+
+	复合闭路定理 : $ f(z) $ 在 $ D $内解析, $ C $ 为 $ D $内的一条正向闭曲线, $ C_{1}, \cdots, C_{n} $落在 $ C $内互补包围, 则 $ \oint\limits_{C}f(z)\mathrm{d}z = \sum_{i=1}^{n}\oint\limits_{C_{i}}f(z)\mathrm{d}z $
+
+	$ \oint\limits_{C}\frac{1}{(z-z_{0})^{n}}\mathrm{d}z = \begin{cases} 2\pi i&, n = 1 \\ 0&, n = 0 \end{cases} $
+
+	$ 2\pi if(z_{0}) = \oint\limits_{C}\frac{f(z)}{z-z_{0}} $
+
+	$ 2\pi if^{(n)}(z_{0}) = n!\oint\limits_{C}\frac{f(z)}{(z-z_{0})^{n+1}} $
+
+	调和函数 : $ \frac{\partial^{2} u}{\partial x^{2}} + \frac{\partial^{2} u}{\partial y^{2}} = 0 $, 称 $ u(x, y) $为调和函数
+
+	若 $ f(z) = u(x, y) + iv(x, y) $ 在 $ D $ 内解析 , 则 $ u(x, y), v(x, y) $ 为 $ D $ 上的调和函数, $ v(x, y) $ 为 $ u(x, y) $ 的共轭调和函数
+\end{document}
