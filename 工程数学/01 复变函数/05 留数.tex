@@ -1,0 +1,37 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	可去奇点 : 洛朗级数不含 $ z - z_{0} $ 的负幂项
+
+	极点 : 洛朗级数含有限的 $ z - z_{0} $ 的负幂项, 关于 $ (z - z_{0})^{-1} $ 的最高幂项为 $ m $, 称为 $ m $ 级极点
+
+	本性奇点 : 洛朗级数含无穷多个 $ z - z_{0} $ 的负幂项
+
+	留数 : $ \mathrm{Res}[f(z), z_{0}] = \oint\limits_{C}f(z)\mathrm{d}z = c_{-1} $, $ C $ 中只有 $ z_{0} $ 一个奇点
+
+	留数定理 : $ \oint\limits_{C}f(z)\mathrm{d}z = 2\pi i\sum\mathrm{Res}[f(z), z_{i}] $, 其中 $ z_{1}, \cdots, z_{n} $ 为 $ f(z) $ 在 $ C $ 内的奇点
+
+	留数计算方法 : 
+	\begin{itemize}[leftmargin = 4em]
+		\item $ z_{0} $ 为一级极点, $ \mathrm{Res}[f(z), z_{0}] = \lim\limits_{z \to z_{0}}(z - z_{0})f(z) $
+		\item $ z_{0} $ 为 $ m $ 级极点, $ \mathrm{Res}[f(z), z_{0}] = \frac{1}{(m-1)!} \lim\limits_{z \to z_{0}}\frac{\mathrm{d}^{m-1}}{\mathrm{d}z^{m-1}}[(z-z_{0})^{m}f(z)] $
+		\item $ z_{0} $ 为一级极点, $ f(z) = \frac{P(z)}{Q(z)} $, $ \mathrm{Res}[f(z), z_{0}] = \frac{P(z_{0})}{Q'(z_{0})} $
+		\item $ \mathrm{Res}[f(z), \infty] = -c_{-1} = -\sum\mathrm{Res}[f(z), z_{i}] = -\mathrm{Res}[\frac{1}{z^{2}}f\left(\frac{1}{z}\right), 0]$
+	\end{itemize}
+
+	应用:
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \int_{0}^{2\pi}R(\cos\theta, \sin\theta)\mathrm{d}\theta = \oint\limits_{|z|=1}R[\frac{z^{2}+1}{2z}, \frac{z^{2}-1}{2iz}]\frac{\mathrm{d}z}{iz} $
+		\item $ \int_{-\infty}^{+\infty}R(x)\mathrm{d}x = 2\pi i\sum\mathrm{Res}[R(z), z_{i}] $, 其中 $ R(x) $ 的分母次数比分子高二次, 在实轴没有孤立奇点, $ z_{1}, \cdots, z_{n} $ 为 $ f(z) $ 在 $ \mathrm{Im}z > 0 $ 内的奇点
+		\item $ \int_{-\infty}^{+\infty}R(x)e^{aix}\mathrm{d}x = 2\pi i\sum\mathrm{Res}[R(z)e^{aiz}, z_{i}] $ 其中 $ R(x) $ 的分母次数比分子高一次, 在实轴没有孤立奇点, $ z_{1}, \cdots, z_{n} $ 为 $ f(z) $ 在 $ \mathrm{Im}z > 0 $ 内的奇点
+	\end{itemize}
+	
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	$ \lim\limits_{n \to +\infty}\alpha_{n} = \lim\limits_{n \to +inf} \mathrm{Re}\alpha_{n} + i\mathrm{Im}\alpha_{n} $
+
+	$ \sum\limits_{n=1}^{+\infty}\alpha_{n} $ 收敛的充要条件是 $ \sum\limits_{n=1}^{+\infty}\mathrm{Re}\alpha_{n} $ 和 $ \sum\limits_{n=1}^{+\infty}\mathrm{Im}\alpha_{n} $ 都收敛
+
+	$ \sum\limits_{n=1}^{+\infty}|\alpha_{n}| $ 收敛, 则 $ \sum\limits_{n=1}^{+\infty}\alpha_{n} $ 一定收敛, 且 $ |\sum\limits_{n=1}^{+\infty}\alpha_{n}| \leq \sum\limits_{n=1}^{+\infty}|\alpha_{n}| $
+
+	$ \sum\limits_{n=1}^{+\infty}c_{n}z^{n} $ 在 $ z = z_{0} $ 收敛, 那么在 $ |z| < |z_{0}| $ 收敛; $ \sum\limits_{n=1}^{+\infty}c_{n}z^{n} $ 在 $ z = z_{0} $ 发散, 那么在 $ |z| > |z_{0}| $ 发散
+
+	$ \lim\limits_{n \to +\infty}\left|\frac{c_{n+1}}{c_{n}}\right| = \lambda \neq 0 $, 那么收敛半径 $ R = \frac{1}{\lambda} $
+
+	$ \lim\limits_{n \to +\infty}\sqrt[n]{|C_{n}|} = \mu \neq 0 $, 那么收敛半径 $ R = \frac{1}{\mu} $
+
+\end{document}
