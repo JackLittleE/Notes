@@ -1,0 +1,26 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+	
+	矢量线 : $\frac{\mathrm{d}x}{A_{x}} = \frac{\mathrm{d}y}{A_{y}} = \frac{\mathrm{d}z}{A_{z}} $
+
+	矢量面 : 求出矢量线通解后将曲线方程代入消去常数
+
+	方向导数 : $ \frac{\partial u}{\partial l} = \frac{\partial u}{\partial x}\cos\alpha + \frac{\partial u}{\partial y}\cos\beta $
+
+	梯度 : $ \nabla u = \vec{\mathrm{grad}}u = \frac{\partial u}{\partial x}\vec{i} + \frac{\partial u}{\partial y}\vec{j} + \frac{\partial u}{\partial z}\vec{k} $
+
+	散度 : $ \nabla \cdot \vec{A} = \mathrm{div}\vec{A} = \frac{\partial A_{x}}{\partial x} + \frac{\partial A_{y}}{\partial y} + \frac{\partial A_{z}}{\partial z} $
+
+	旋度 : $ \nabla \times \vec{A} = \vec{\mathrm{rot}}\vec{A} = (\frac{\partial A_{z}}{\partial y} - \frac{\partial A_{y}}{\partial z})\vec{i} + (\frac{\partial A_{x}}{\partial z} - \frac{\partial A_{z}}{\partial x})\vec{j} + (\frac{\partial A_{y}}{\partial x} - \frac{\partial A_{x}}{\partial y})\vec{k} $
+
+	有势场(无旋场) -> $ \nabla \times \vec{A} = 0 $, 管型场(无源场) -> $ \nabla \cdot \vec{A} = 0 $, 调和场 -> 无源+无旋
+
+\end{document}
