@@ -1,0 +1,38 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	常见信号
+	\begin{itemize}[leftmargin = 4em]
+		\item 实指数信号 : $ f(t) = Ae^{\alpha t} $
+		\item 正弦信号 : $ f(t) = A\sin(\Omega t + \theta) $
+		\item 抽样函数 : $ Sa(t) = \frac{\sin t}{t} $
+		\item 单位斜变信号 : $ R(t) = \begin{cases} t,& t \geq 0 \\ 0,& t < 0 \end{cases} $
+		\item 单位阶跃信号 : $ u(t) = \begin{cases} 1,& t \geq 0 \\ 0,& t < 0 \end{cases} $
+		\item 单位冲激信号 : $ \delta(t) = u'(t) $
+		\item 冲击偶信号 : $ \delta'(t) $
+	\end{itemize}
+
+	冲击偶信号性质
+	\begin{itemize}[leftmargin = 4em]
+		\item $ f(t)\delta'(t) = f(0)\delta'(t) - f'(0)\delta(t) $
+		\item $ \int_{-\infty}^{+\infty}\delta'(t)f(t)\mathrm{d}t = -f'(0) $
+	\end{itemize}
+
+	卷积性质
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \frac{\mathrm{d}}{\mathrm{d}t}[f_{1} * f_{2}] = \frac{\mathrm{d}}{\mathrm{d}t}f_{1} * f_{2} $
+		\item $ \int_{-\infty}^{t}[f_{1} * f_{2}]\mathrm{d}t = \int_{-\infty}^{t}f_{1}\mathrm{d}t * f_{2} $
+		\item $ f_{1} * f_{2} = \frac{\mathrm{d}}{\mathrm{d}t}f_{1} * \int_{-\infty}^{t}f_{2}\mathrm{d}t $
+		\item $ f(t) * \delta^{(k)}(t) = f^{(k)}(t) $
+		\item $ f(t) * u(t) = \int_{-\infty}^{t}f(t)\mathrm{d}t $
+	\end{itemize}
+
+\end{document}
