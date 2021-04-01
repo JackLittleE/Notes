@@ -1,0 +1,60 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	对于系统 $ y(x) $ 和激励 $ x(t) $
+	\begin{itemize}[leftmargin = 4em]
+		\item 线性 : $ y[a_{1}x_{1}(t) + a_{2}x_{2}(t)] = a_{1}y[x_{1}(t)] + a_{2}y[x_{2}(t)] $
+		\item 时不变 : 若激励 $ x(t) $ 相应为 $ y(t) $, 则激励 $ x(t-t_{0}) $ 的响应为 $ y(t-t_{0}) $
+		\item 微积分 : 对于线性时不变系统, 若激励 $ x(t) $ 响应为 $ y(t) $, 则激励 $ \frac{\mathrm{d}}{\mathrm{d}t}x(t) $ 的响应为 $ \frac{\mathrm{d}}{\mathrm{d}t}y(t) $
+		\item 因果 : $ t < t_{0} $ 时激励为零, 响应也为零
+		\item 稳定性 : 激励有界则响应也有界
+	\end{itemize}
+
+	系统的完全响应 = 齐次解(自由响应, $ y_{p}(t) $) + 特解(强迫响应, $ y_{h}(t) $)
+
+	起始状态 : $ y^{(k)}(0^{-}) $, 初始状态 $ y^{(k)}(0^{+}) $
+
+	确定起始状态-冲激函数平衡法
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \frac{\mathrm{d}y(t)}{\mathrm{d}t} + y(t) = 2\delta(t) \to \frac{\mathrm{d}y(t)}{\mathrm{d}t} \supset 2\delta(t) \to y(t) \supset 2u(t) \to y(0^{+}) - y(0^{-}) = 2 $
+		\item $ \frac{\mathrm{d}^{2}y(t)}{\mathrm{d}t^{2}} + 4\frac{\mathrm{d}y(t)}{\mathrm{d}t} + 3y(t) = \delta'(t) + 2\delta(t) \\
+				\to \begin{cases} y''(t) &\subset A\delta'(t) + B\delta(t) \\ y'(t) &\subset A\delta(t) + Bu(t) \\ y(t) &\subset Au(t) \end{cases} \\
+				\to [A\delta'(t) + B\delta(t)] + 4[A\delta(t) + Bu(t)] = \delta'(t) + 2\delta(t) \\
+				\to \begin{cases} A &= 1 \\ B &= -2 \end{cases} \\
+				\to \begin{cases} y(0^{+}) - y(0^{-}) &= 1 \\ y'(0^{+}) - y'(0^{-}) &= -2 \end{cases} $
+	\end{itemize}
+
+	系统的完全响应 = 激励为零时的响应(零输入响应, $ y_{zi}(t) $) + 起始状态为零时的响应(零状态响应, $ y_{zs}(t) $)
+
+	激励由 $ x(t) $ 变为 $ 2x(t) $ 时, 零输入响应不变, 零状态响应变为2倍
+
+	单位冲激响应 $ h(t) $, 激励为 $ \delta(t) $ 时的零状态响应
+
+	单位阶跃响应 $ g(t) $, 激励为 $ u(t) $ 时的零状态响应
+
+	冲激响应($ a_{n}\frac{\mathrm{d}^{(n)}}{\mathrm{d}t^{(n)}}h(t) + \dots + a_{1}\frac{\mathrm{d}}{\mathrm{d}t}h(t) + a_{0}h(t) = 
+			  a_{m}\frac{\mathrm{d}^{(m)}}{\mathrm{d}t^{(m)}}\delta(t) + \dots + a_{1}\frac{\mathrm{d}}{\mathrm{d}t}\delta(t) + a_{0}\delta(t) $)的求解
+	\begin{itemize}[leftmargin = 4em]
+		\item $ n > m $, $ h(t) $ 的解不含 $ \delta(t) $
+		\item $ n = m $, $ h(t) $ 的解含 $ \delta(t) $
+		\item $ n < m $, $ h(t) $ 的解含 $ \delta(t), \delta'(t), \dots $
+		\item 系数可以由初始状态和冲激函数平衡法, 或待定系数法确定
+	\end{itemize}
+
+	阶跃响应的求法 : $ n \geq m $ 时, 响应不包含阶跃信号, $ h(t) = \frac{\mathrm{d}}{\mathrm{d}t}g(t) $
+
+	零状态响应 $ y_{zs}(t) $ = $ x(t) * h(t) $, 其中 $ x(t) $ 为激励, $ h(t) $ 为单位冲激响应
+
+	并联系统的冲激响应等于子系统冲激响应之和
+
+	串联系统的冲激响应等于子系统冲激响应卷积
+
+\end{document}
