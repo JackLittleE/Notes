@@ -1,0 +1,24 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+	
+	事件的运算 : 包含, 相等, 并, 交, 差
+
+	古典概型 : 实验满足有限性(有限中可能), 等可能性(发生概率相同)
+
+	盒中有 $ N $ 个球, $ M $ 个白球, 抽取 $ n $ 个球, $ k $个白球的概率 : $ \frac{C_{M}^{k}C_{N-M}^{n-k}}{C_{N}^{n}} $
+
+	条件概率 : $ P(B|A) $, $ A $ 发生的条件下 $ B $ 发生的概率
+
+	全概率公式 : $ A_{1}, \dots, A_{n} $ 是 $ S $ 的一个划分, 则 $ \forall B \subset S, P(B) = \sum\limits_{i=1}^{n}P(B|A_{i})P(A_{i}) $
+
+	贝叶斯公式 : $ P(AB) = P(B|A)P(A) $
+
+\end{document}
