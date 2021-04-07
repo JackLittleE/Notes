@@ -1,0 +1,74 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	常见信号
+	\begin{itemize}[leftmargin = 4em]
+		\item 单位样值信号 : $ \delta[n] = \begin{cases} 1,& n = 0 \\ 0,& n \neq 0 \end{cases} $
+		\item 单位阶跃序列 : $ u[n] = \begin{cases} 1,& n \geq 0 \\ 0,& n < 0 \end{cases} $
+		\item 矩形序列 : $ R_{N}[n] = \begin{cases} 1,& 0 \leq n \leq N-1 \\ 0,& others \end{cases} $
+		\item 单边实质数序列 : $ x[n] = \begin{cases} a^{n},& n \geq 0 \\ 0,& n < 0 \end{cases} $
+		\item 单边正弦序列 : $ x[n] = \begin{cases} \sin\omega_{0}n,& n \geq 0 \\ 0,& n < 0 \end{cases} $, 周期为 $ \frac{2\pi}{\omega_{0}} $ 化简后的分母
+		\item 斜变序列 : $ x[n] = \begin{cases} n,& n \geq 0 \\ 0,& n < 0 \end{cases} $
+	\end{itemize}
+
+	运算
+	\begin{itemize}[leftmargin = 4em]
+		\item 加减, 乘积 : 序号相同的逐项运算
+		\item 前向差分 : $ \Delta x[n] = x[n+1] - x[n] $
+		\item 后向差分 : $ \nabla x[n] = x[n] - x[n-1] $
+		\item 能量 : $ \sum\limits_{-\infty}^{+infty}|x[n]|^{2} $
+		\item 卷积 : $ x[n] * y[n] = \sum\limits_{m = -\infty}^{+\infty}x[m]y[n-m] $
+	\end{itemize}
+
+	求解差分方程:
+
+	迭代法 : 求出 $ y[0], y[1], \dots, y[n] $ (找规律)
+
+	经典解法:
+	\begin{itemize}[leftmargin = 4em]
+		\item 求解特征方程, 齐次解为 $ y[n] = C_{1}a_{1}^{n} + \dots + C_{k}a_{k}^{n} $(无重根的情况下)
+		\item 根据激励求特解
+		\item 代入边界条件 $ y[-1], \dots $, 求出常数
+	\end{itemize}
+
+	单位样值响应 $ h[n] $: 激励为 $ \delta[n] $ 时的零状态响应, 可以用迭代法和经典法求解
+
+	卷积性质 $ s[n] = x[n] * y[n] $
+	\begin{itemize}[leftmargin = 4em]
+		\item 交换律, 结合律, 分配律
+		\item $ s[n - n_{1} - n_{2}] = x[n - n_{1}] * y_[n - n_{2}] $
+		\item $ \nabla s[n] = \nabla x[n] * y[n] $
+		\item $ s[n] = \nabla x[n] * \sum\limits_{i = -\infty}^{+\infty}y[i] $
+		\item $ x[n] * \delta[n - n_{0}] = x[n - n_{0}] $
+		\item $ x[n] * u[n] = \sum\limits_{i = -\infty}^{n}x[i] $
+	\end{itemize}
+
+	因果系统 : $ h[n] = 0, while n < 0 $
+
+	稳定系统 : $ \sum\limits_{-\infty}^{+\infty}|h[n]| < \infty $
+
+	常见卷积
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|c|}
+			\hline
+			$ x_{1} $ & $ x_{2} $ & $ x_{1} * x_{2} $ \\ \hline
+			$ \delta[n] $ & $ x[n] $ & $ x[n] $ \\ \hline
+			$ u[n] $ & $ x[n] $ & $ \sum\limits_{i = -\infty}^{n}x[i] $ \\ \hline
+			$ u[n] $ & $ u[n] $ & $ (n+1)u[n] $ \\ \hline
+			$ a^{n}u[n] $ & $ b^{n}u[n] $ & $ \frac{a^{n-1}-b^{n-1}}{a-b}u[n] $ \\ \hline
+			$ a^{n}u[n] $ & $ a^{n}u[n] $ & $ (n+1)a^{n}u[n] $ \\ \hline
+			$ a^{n}u[n] $ & $ nu[n] $ & $ \frac{n}{1-a}+\frac{a(a^{n}-1)}{(1-a)^{2}}u[n] $  \\ \hline
+			$ u[n]-u[n-N] $ & $ u[n]-u[n-N] $ & $ \begin{cases}n+1&, 0 \leq n \leq N-1 \\ 2N-n-1&, N \geq n \geq 2N-2 \\ 0&, others \end{cases} $ \\ \hline
+			$ u[n]-u[n-N] $ & $ a^{n}u[n] $ & $ a^{n}\frac{1-a^{-(n+1)}}{1-a^{-1}}\{u[n]-u[n-N]\}+a^{n}\frac{1-a^{-N}}{1-a^{-1}}u[n-N] $ \\ \hline
+		\end{tabular}
+	\end{table}
+
+\end{document}
