@@ -1,0 +1,61 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a3paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	分布律 : 列出 $ P\{X = x_{k}\} = p_{k} $
+	\begin{itemize}[leftmargin = 4em]
+		\item 非负性 : 离散 : $ p_{k} \geq 0 $, 连续 : $ f(x) \geq 0 $
+		\item 归一性 : 离散 : $ \sum\limits_{i}p_i = 1 $, 连续 : $ \int_{-\infty}^{+\infty}f(x)\mathrm{d}x = 1 $
+	\end{itemize}
+
+	常见分布(离散变量)
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			名称 & 符号 & 分布律 & 注释 \\ \hline
+			0-1分布 & & $ P\{X = k\} = \begin{cases} 1-p&, k=0 \\ p&, k=1 \end{cases} $ & \\ \hline
+			二项分布 & $ B(n, p) $ & $ P\{X = k\} = C_{n}^{k}p^{k}(1-p)^{n-k} $ & $ n $次伯努利实验  \\ \hline
+			泊松分布 & $ P(\lambda) $ & $ P\{X = k\} = \frac{\lambda^{k}}{k!}e^{-\lambda} $ & $ n $ 很大 $ p $ 很小时, 二项分布可以近似为泊松分布 \\ \hline
+			几何分布 & $ G(p) $ & $ P\{X = k\} = (1-p)^{k-1}p $ & 贝努里实验中, 实验进行到事件出现时进行了 $ k $ 次 \\ \hline
+			超几何分布 & $ H(n, M, N) $ & $ P\{X = k\} = \frac{C_{M}^{k}C_{N-M}^{n-k}}{C_{N}^{n}} $ & \\ \hline
+		\end{tabular}
+	\end{table}
+
+	分布函数 : 事件 $ \{X \leq x\} $ 出现的概率
+	\begin{itemize}[leftmargin = 4em]
+		\item 单调不减性 : 若 $ x_{1} < x_{2} $, 则 $ F(x_{1}) < F(x_{2}) $
+		\item 归一性 : $ F(-\infty) = 0, F(+\infty) = 1 $
+		\item 右连续性 : $ F(x_{0}+0) = F(x_{0}) $
+	\end{itemize}
+
+	常见分布(连续变量)
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			名称 & 符号 & 概率密度 & 分布函数 \\ \hline
+			均匀分布 & $ U(a, b) $ & $ \begin{cases} \frac{1}{b-a}&, a < x < b \\ 0&, others \end{cases} $ & $ \begin{cases} 0&, x \leq a \\ \frac{x-a}{b-a}&, a < x < b \\ 1&, b \leq x \end{cases} $ \\ \hline
+			指数分布 & $ E(\lambda) $ & $ \begin{cases} \lambda e^{-\lambda x}&, x > 0 \\ 0&, x \leq 0 \end{cases} $ & $ \begin{cases} 1-e^{-\lambda x}&, x > 0 \\ 0&, x \leq 0 \end{cases} $ \\ \hline
+			正态分布 & $ N(\mu, \sigma^{2}) $ & $ \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}} $ & $ \Phi(\frac{x-\mu}{\sigma}) $ \\ \hline
+		\end{tabular}
+	\end{table}
+
+	$ \Phi(x) $ 的性质
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \Phi(x) = \int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}\mathrm{d}x $
+		\item $ \Phi(x) = 1 - \Phi(-x) $
+	\end{itemize}
+
+	随机变量函数 $ y = g(x) $ 的分布 : 
+
+	离散型 : 列表法 / 公式法(将 $ x = h(y) $ 代入x的分布律中)
+
+	连续型 : $ P\{Y \leq y\} = P\{g(X) \leq y \} = \int_{g(x) \geq y}f(x)\mathrm{d}x $ / 公式法($ y $ 为单调减函数) : $ Y ~ \begin{cases}f_{x}[g^{-1}(y)][g^{-1}(y)]'&, \min(g(a), g(b)) < y < \max(...) \\ 0&, others \end{cases} $
+
+\end{document}
