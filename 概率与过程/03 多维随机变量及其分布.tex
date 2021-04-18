@@ -1,0 +1,50 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+	
+	联合分布函数 : $ F(x, y) = P\{X \leq x, Y \leq y\} $
+
+	$ P{x_{1} \leq x \leq x_{2}, y_{1} \leq y \leq y_{2}} = F(x_{2}, y_{2}) - F(x_{1}, y_{2}) - F(x_{2}, y_{1}) + F(x_{1}, y_{1}) $
+
+	归一性 : $ F(+\infty, +\infty) = 1, F(-\infty, -\infty) = F(-\infty, y) = F(x, -\infty) = 0 $
+
+	离散随机变量 : $ (X, Y) ~ P\{X = x_{i}, Y = y_{i}\} $
+
+	连续随机变量 : $ (X, Y) ~ f(x, y) , F(x, y) = \int_{-\infty}^{x}\int_{-\infty}^{y}f(u, v)\mathrm{d}u\mathrm{d}v $
+
+	若 $ f(x, y) $ 在 $ (x, y) \in \mathbf{R}^{2} $ 连续, 则 $ \frac{\partial^2}{\partial x \partial y}F(x, y) = f(x, y) $
+
+	常见分布(连续变量)
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			名称 & 符号 & 概率密度 \\ \hline
+			均匀分布 & & $ \begin{cases} \frac{1}{S_{D}}&, (x, y) \in D \\ 0&, others \end{cases} $ \\ \hline
+			正态分布 & $ N(\mu_{1}, \mu_{2}, \sigma_{1}^{2}, \sigma_{2}^{2}, \rho) $ & 
+			$ \frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}e^{-\frac{1}{2(1-\rho^{2})}[\frac{(x-\mu_{1})^{2}}{\sigma_{1}^{2}} - 2\rho\frac{(x-\mu_{1})(y-\mu_{2})}{\sigma_{1}\sigma_{2}} + \frac{(y-\mu_{2})^{2}}{\sigma_{2}^{2}}]} $ \\ \hline
+		\end{tabular}
+	\end{table}
+
+	边缘分布函数 : $ F_{x}(x) = F(x, +\infty) $, 边缘密度函数 : $ f_{x}(x) = \int_{-\infty}^{+\infty}f(x, y)\mathrm{d}y $
+
+	独立 : 事件 $ X, Y $ 独立的充要条件是 $ F(x, y) = F_{x}(x)F_{y}(y) , f(x, y) = f_{x}(x)f_{y}(y) $
+
+	条件分布 : 称 $ p_{i|j} = P\{X = x_{i}|Y = y_{j}\} = \frac{p_{ij}}{p_{\dot j}} $ 为在 $ Y = y_{j} $ 的条件下, $ X $ 的条件分布律
+
+	条件分布函数 : $ F(x|y) = \frac{\int_{-\infty}^{x}f(x, y)\mathrm{d}x}{f_{y}(y)} $, $ f(x|y) = \frac{f(x, y)}{f_{y}(y)} $
+
+	随机变量函数 : $ Y = g(x_{1}, \dots, x_{n}) $
+	\begin{itemize}[leftmargin = 4em]
+		\item $ F_{y}(y) = \idotsint_{g(x_{1}, \dots, x_{n}) < y}f(x_{1}, \dots, x_{n})\mathrm{d}x_{1}\dots\mathrm{d}x_{n} $
+		\item $ Z = X + Y , f_{z}(z) = \int_{-\infty}^{+\infty}f(z-y, y)\mathrm{d}y = \int_{-\infty}^{+\infty}f(x, z-x)\mathrm{d}x $
+		\item $ X_{1}, \dots, X_{n} $ 相互独立, $ F_{\max(x_{1}, \dots, x_{n})}(x) = \prod\limits_{i=1}^{n}F_{i}(n), F_{\min(x_{1}, \dots, x_{n})}(x) = 1 - \prod\limits_{i=1}^{n}[1-F_{i}(x)] $
+	\end{itemize}
+ 
+\end{document}
