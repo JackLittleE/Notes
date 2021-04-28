@@ -1,0 +1,137 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	\noindent 傅里叶级数
+
+		设周期信号 $ \tilde{f}(t) $ 周期为 $ T_{1} $, 角频率 $ \Omega_{1} = \frac{2\pi}{T_{1}} $, 将 $ \tilde{f}(t) $ 展开为傅里叶级数
+
+		$ \tilde{f}(t) = a_{0} + \sum\limits_{n=1}^{\infty}(a_{n}\cos n\Omega_{1} t + b_{n}\sin n\Omega_{1} t) = \sum\limits_{n=1}^{\infty}c_{n}\cos(n\Omega_{1}t + \varphi) $
+
+		其中 $ \begin{cases}
+			(\text{直流分量})a_{0} = \frac{1}{T_{1}}\int_{t_{0}}^{t_{0}+T_{1}}\tilde{f}(t)\mathrm{d}t \\
+			a_{n} = \frac{2}{T_{1}}\int_{t_{0}}^{t_{0}+T_{1}}\tilde{f}(t)\cos n\Omega_{1}t\mathrm{d}t \\
+			a_{n} = \frac{2}{T_{1}}\int_{t_{0}}^{t_{0}+T_{1}}\tilde{f}(t)\sin n\Omega_{1}t\mathrm{d}t \\
+			(\text{交流分量})c_{n} = \sqrt{a_{n}^{2}+b_{n}^{2}}, \varphi_{n} = \arctan(-\frac{b_{n}}{a_{n}})
+			\end{cases} $
+		
+		复指数形式 :
+				
+			$ \tilde{f}(t) = \sum\limits_{n=-\infty}^{+\infty}F_{n}e^{jn\Omega_{1}t} $
+
+			其中 $ \begin{cases}
+				F_{0} = c_{0} \\
+				F_{n} = \frac{c_{n}}{2}e^{j\varphi_{n}}
+			\end{cases} $
+
+		对称性 : 
+			
+			偶函数 : 只有直流和余弦分量; 奇函数 : 只有正弦分量
+
+			偶谐函数($ \tilde{f}(t \pm \frac{T_{1}}{2}) = \tilde{f}(t) $) : 只有(直流)和偶次谐波分量; 奇谐函数($ \tilde{f}(t \pm \frac{T_{1}}{2}) = -\tilde{f}(t) $) : 只有奇次谐波分量; 
+
+		周期矩形脉冲信号 :
+
+			$ \tilde{f}(t) = \begin{cases} E&, 0 < |t| < \frac{\tau}{2} \\ 0&, \frac{\tau}{2} < |t| < \frac{T_{1}}{2} \end{cases}  
+			= \frac{E\tau}{T_{1}} + \frac{2E\tau}{T_{1}}\sum\limits_{n=1}^{\infty}Sa(\frac{n\Omega_{1}\tau}{2})\cos n\Omega_{1}t $
+
+			谱线间隔 $ \Omega_{1} $, 频带宽度 $ B_{f} = \frac{1}{\tau} $
+	
+	\noindent 傅里叶变换
+		
+		$ F(j\Omega) = \mathscr{F}[f(t)] = \int_{-\infty}^{+\infty}f(t)e^{-j\Omega t}\mathrm{d}t = |F(j\Omega)|e^{j\varphi(\Omega)} $
+
+		$ f(t) = \mathscr{F}^{-1}[F(j\Omega)] = \frac{1}{2\pi}\int_{-\infty}^{+\infty}F(j\Omega)e^{j\Omega t}\mathrm{d}\Omega $
+
+		性质: 
+		\begin{itemize}[leftmargin = 4em]
+			\item $ g(t) = x(t-t_{0}) \leftrightarrow G(j\Omega) = e^{-j\Omega t_{0}}X(j\Omega) $
+			\item $ g(t) = \overline{x(t)} \leftrightarrow G(j\Omega) = \overline{X(-j\Omega)} $
+			\item $ g(t) = x(at) \leftrightarrow G(j\Omega) = \frac{1}{|a|}X(j\frac{\Omega}{a}) $
+			\item $ g(t) = \frac{\mathrm{d}}{\mathrm{d}t}x(t) \leftrightarrow G(j\Omega) = j\Omega X(j\Omega) $
+			\item $ g(t) = \int_{-\infty}^{t}x(\tau)\mathrm{d}\tau \leftrightarrow G(j\Omega) = \frac{X(j\Omega)}{j\Omega} + \pi [g(+\infty)+g(-\infty)]\delta(\Omega) $
+			\item $ \int_{-\infty}^{+\infty}|x(t)|^{2}\mathrm{d}t = \int_{-\infty}^{+\infty}|X(j\Omega)|^{2}\mathrm{d}\Omega $
+			\item $ G(j\Omega) = X(j(\Omega-\Omega_{0})) \leftrightarrow g(t) = e^{j\Omega_{0}t}x(t) $
+			\item $ G(j\Omega) = X(ja\Omega) \leftrightarrow g(t) = \frac{1}{|a|}x(\frac{t}{a}) $
+			\item $ G(j\Omega) = \frac{\mathrm{d}}{\mathrm{d}\Omega}X(j\Omega) \leftrightarrow g(t) = -jtx(t) $
+			\item $ G(j\Omega) = \int_{-\infty}^{\Omega}X(j\Omega)\mathrm{d}\Omega \leftrightarrow g(t) = \frac{x(t)}{-jt} + \pi x(0)\delta(t) $
+			\item $ g(t) = X(jt) \leftrightarrow G(j\Omega) = 2\pi x(-\Omega) $ 
+			\item $ g(t) = \cos(\Omega_{0}t)x(t) \leftrightarrow G(j\Omega) = \frac{1}{2}[X(j(\Omega+\Omega_{0}))+X(j(\Omega-\Omega_{0}))] $
+			\item $ g(t) = \sin(\Omega_{0}t)x(t) \leftrightarrow G(j\Omega) = \frac{1}{j2}[X(j(\Omega+\Omega_{0}))-X(j(\Omega-\Omega_{0}))] $
+			\item $ g(t) = a_{1}x_{1}(t)+a_{2}x_{2}(t) \leftrightarrow G(j\Omega) = a_{1}X_{1}(j\Omega)+a_{2}X_{2}(j\Omega) $
+			\item $ g(t) = x_{1}(t)*x_{2}(t) \leftrightarrow G(j\Omega) = X_{1}(j\Omega)X_{2}(j\Omega) $
+			\item $ g(t) = x_{1}(t)x_{2}(t) \leftrightarrow G(j\Omega) = \frac{1}{2\pi}X_{1}(j\Omega)*X_{2}(j\Omega) $
+			\item 对于周期函数, $ \tilde{f}(t) = \sum\limits_{n=-\infty}^{+\infty}F_{n}e^{jn\Omega_{1}t} \leftrightarrow 2\pi\sum\limits_{n=-\infty}^{+\infty}F_{n}\delta(\Omega-n\Omega_{1}) $
+		\end{itemize}
+		
+		常见傅里叶变换 :
+		\begin{table}[ht]
+			\begin{tabular}{|c|c|}
+				\hline
+				$ \delta(t) $ & 1 \\ \hline
+				$ u(t) $ & $ \frac{1}{j\Omega} + \pi\delta(\Omega) $ \\ \hline
+				$ sgn(t) $ & $ \frac{2}{j\Omega} $ \\ \hline
+				$ e^{-at}u(t) $ & $ \frac{1}{a+j\Omega} $ \\ \hline
+				$ e^{-a|t|} $ & $ \frac{2a}{a^{2}+\Omega^{2}} $ \\ \hline
+				$ \begin{cases} E,& |t| \leq \frac{\tau}{2} \\ 0,& others \end{cases} $ & $ E\tau Sa(\frac{\Omega\tau}{2}) $ \\ \hline
+			\end{tabular}
+		\end{table}
+
+	\noindent 拉普拉斯变换
+		
+		(双边)$ F_{B}(s) = \mathscr{L}_{B}[f(t)] = \int_{-\infty}^{+\infty}f(t)e^{-st}\mathrm{d}t $
+
+		$ f(t) = \mathscr{L}_{B}^{-1}[f(t)] := \frac{1}{2\pi j}\int_{\theta-j\infty}^{\theta+j\infty}F_{B}(s)e^{st}\mathrm{d}s $
+
+		收敛域 : $ \exists M \geq 0, c \geq 0, |f(t)| \leq Me^{ct} $, 收敛域为 $ \sigma > c $
+
+		(单边)$ F(s) = \mathscr{L}[f(t)] = \int_{0^{-}}^{+\infty}f(t)e^{-st}\mathrm{d}t $
+
+		$ f(t) = \mathscr{L}^{-1}[f(t)] := \frac{1}{2\pi j}\int_{\theta-j\infty}^{\theta+j\infty}F(s)e^{st}\mathrm{d}s $
+
+		性质 : 
+		\begin{itemize}[leftmargin = 4em]
+			\item $ g(t) = k_{1}x_{1}(t)+k_{2}x_{2}(t) \leftrightarrow G(s) = k_{1}X_{1}(s)+k_{2}X_{2}(s) $
+			\item $ g(t) = x(t-t_{0}) \leftrightarrow G(s) = e^{-st_{0}}X(s) $
+			\item $ g(t) = e^{-at}x(t) \leftrightarrow G(s) = X(s+a) $
+			\item $ g(t) = x(at) \leftrightarrow G(s) = \frac{1}{a}X(\frac{s}{a}) $
+			\item $ g(t) = \frac{\mathrm{d}}{\mathrm{d}t}x(t) \leftrightarrow G(s) = sX(s)-x(0^{-}) $
+			\item $ g(t) = \int_{-\infty}^{t}x(\tau)\mathrm{d}\tau \leftrightarrow G(s) = \frac{X(s)}{s} + \frac{\int_{-\infty}^{0^{-}}x(\tau)\mathrm{d}\tau}{s} $
+			\item $ g(t) = (-t)x(t) \leftrightarrow G(s) = \frac{\mathrm{d}}{\mathrm{d}s}X(s) $
+			\item $ g(t) = \frac{x(t)}{t} \leftrightarrow G(s) = \int_{s}^{+\infty}X(\eta)\mathrm{d}\eta $
+			\item $ x(0^{+}) = \lim\limits_{s \to +\infty}sX(s) $
+			\item $ x(+\infty) = \lim\limits_{s \to 0}sX(s) $
+			\item $ g(t) = x_{1}(t)*x_{2}(t) \leftrightarrow G(s) = X_{1}(s)X_{2}(s) $
+			\item $ g(t) = x_{1}(t)x_{2}(t) \leftrightarrow G(s) = \frac{1}{2\pi j}\int_{\sigma-j\infty}^{\sigma+j\infty}X_{1}(\eta)X_{2}(s-\eta)\mathrm{d}\eta $
+		\end{itemize}
+
+		求逆变换 :
+		\begin{itemize}[leftmargin = 4em]
+			\item $ \mathscr{L}^{-1}[F(s)] = \sum Res[F(s)e^{st}, s_k] $
+			\item $ \mathscr{L}^{-1}[F(s)G(s)] = \mathscr{L}^{-1}[F(s)] * \mathscr{L}^{-1}[G(s)] $
+		\end{itemize}
+
+		常见拉普拉斯变换($ t > 0 $) : 
+		\begin{table}[ht]
+			\begin{tabular}{|c|c|}
+				\hline
+				$ \delta(t) $ & 1 \\ \hline
+				$ u(t) $ & $ \frac{1}{s} $ \\ \hline
+				$ e^{-at} $ & $ \frac{1}{s+a} $ \\ \hline
+				$ t^{n} $ & $ \frac{n!}{s^{n+1}} $ \\ \hline
+				$ \sin\Omega t $ & $ \frac{\Omega}{s^{2}+\Omega^{2}} $ \\ \hline
+				$ \cos\Omega t $ & $ \frac{s}{s^{2}+\Omega^{}} $ \\ \hline
+				$ \sum\limits_{n=0}^{\infty}\delta(t-nT) $ & $ \frac{1}{1-e^{sT}} $ \\ \hline
+			\end{tabular}
+		\end{table}
+
+\end{document}
