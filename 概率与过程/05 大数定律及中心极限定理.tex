@@ -1,0 +1,33 @@
+\documentclass[UTF8, 12pt]{ctexart}
+\linespread{2}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a3paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	依概率收敛 : 设 $ \{X_{n}\} $ 为随机变量序列, $ X $ 为随机变量, 若 $ \forall \varepsilon > 0, \lim\limits_{n \to \infty}P{|X_{n}-X| < \varepsilon} = 1 $, 则称 $ \{X_{n}\} $ 依概率收敛于 $ X $, 
+	记作 $ X_{n} \overset{P}{\to} X $
+
+	切比雪夫大数定律 : 设 $ \{X_{n}\} $ 为随机变量序列, 具有相同的数学期望 $ \mu $ 和方差 $ \sigma^{2} $, 则 $ Y_{n} = \frac{1}{n}\sum\limits_{k=1}^{n}X_{k} \overset{P}{\to} \mu $
+
+	伯努利大数定律 : 设进行 $ n $ 次独立重复实验, 每次实验事件 $ A $ 发生的概率为 $ p $, 记 $ f_{n} $ 为 $ n $ 次实验中事件 $ A $ 发生的频率, 则 $ f_{n} \overset{P}{\to} p $
+
+	辛钦大数定律 : 设 $ \{X_{n}\} $ 为独立同分布随机变量序列, $ E(X_{k}) = \mu $, 则 $ Y_{n} = \frac{1}{n}\sum\limits_{k=1}^{n}X_{k} \overset{P}{\to} \mu $
+
+	推论 : $ \frac{1}{n}\sum\limits_{i=1}^{n}X_{i}^{k} \overset{P}{\to} E(X_{1}^{k}) $
+
+	依分布收敛 : 设 $ \{X_{n}\} $ 为随机变量序列, $ X $ 为随机变量, 对应的分布函数为 $ F_{n}(x), F(x) $, 若在 $ F(x) $ 的连续点有 $ \lim\limits_{n \to +\infty}F_{n}(x) = F(x) $, 则称 $ \{X_{n}\} $ 依分布收敛于 $ X $, 
+	记作 $ X_{n} \overset{w}{\to} X $, 令 $ Y_{n} = \sum\limits_{k=1}^{\infty}X_{k} $, 若 $ Y_{n} $ 的标准化 $ Y_{n}^{*} \overset{w}{\to} \xi ~ N(0, 1) $, 则称  $ \{X_{n}\} $ 满足中心极限定理
+
+	独立同分布中心极限定理 : 设 $ \{X_{n}\} $ 为独立同分布随机变量序列, $ E(X_{k}) = \mu, D(X_{k}) = \sigma $, 则 $ X_{n} $ 满足中心极限定理
+
+	德莫佛-拉普拉斯中心极限定理 : 设 $ \{X_{n}\} ~ B(n, p) $, 则 $ \{X_{n}\} $ 满足中心极限定理
+
+	若 $ \{X_{n}\} $ 满足中心极限定理, $ E(X_{k}) = \mu, D(X_{k}) = \sigma $, 则当 $ n $ 充分大时, $ P\{X_{n} < x\} \approx \Phi(\frac{x-n\mu}{\sqrt{n}\sigma}) $ 
+
+\end{document}
