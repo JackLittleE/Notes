@@ -1,0 +1,80 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	\noindent 期望 : 描述随机变量的平均特征
+
+		离散 : $ E(X) = \sum\limits_{k} x_{k}p_{k} $
+
+		连续 : $ E(X) = \int_{-\infty}^{+\infty}xf(x)\mathrm{d}x $
+
+		随机变量函数的期望 : 
+
+		$ E(g(X)) = \sum\limits_{k}g(x_{k})p_{k}\text{(离散)} = \int_{-\infty}^{+\infty}g(x)f(x)\mathrm{d}x\text{(连续)} $
+
+		性质 :
+		\begin{itemize}[leftmargin = 4em]
+			\item $ E(c) = c $
+			\item $ E(ctexart) = cE(x) $
+			\item $ E(X + Y) = E(X) + E(Y) $
+			\item 若 $ X, Y $ 独立, 则 $ E(XY) = E(X)E(Y) $
+		\end{itemize}
+	
+	\noindent 方差 : 随机变量的取值与均值的偏离情况
+		
+		$ D(X) = E[X - E(x)]^{2} = E(X^{2}) - E^{2}(X) $
+
+		性质 :
+		\begin{itemize}[leftmargin = 4em]
+			\item $ D(c) = 0 $
+			\item $ D(cX) = c^{2}D(x) $
+			\item $ D(X + c) = D(X) $
+			\item 若 $ X, Y $ 独立, 则 $ D(X + Y) = D(X) + D(Y) $
+		\end{itemize}
+
+	\noindent 常见期望和方差 : 
+	\begin{table}[ht]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			名称 & 符号 & 期望 & 方差 \\ \hline
+			0-1分布 & & $ p $ & $ p(1-p) $ \\ \hline
+			二项分布 & $ B(n, p) $ & $ np $ & $ np(1-p) $ \\ \hline
+			泊松分布 & $ P(\lambda) $ & $ \lambda $ & $ \lambda $ \\ \hline
+			均匀分布 & $ U(a, b) $ & $ \frac{a+b}{2} $ & $ \frac{(b-a)^{2}}{12} $ \\ \hline
+			指数分布 & $ E(\lambda) $ & $ \frac{1}{\lambda} $ & $ \frac{1}{\lambda^{2}} $ \\ \hline
+			正态分布 & $ N(\mu, \sigma^{2}) $ & $ \mu $ & $ \sigma^{2} $ \\ \hline
+		\end{tabular}
+	\end{table}
+
+	\noindent 切比雪夫不等式 : 若随机变量 $ X $ 的期望和方差存在, 则 $ \forall \epsilon > 0, P\{|X-E(X)| \geq \varepsilon\} \leq \frac{D(X)}{\varepsilon^{2}} $
+
+	\noindent 协方差与相关系数
+
+		协方差 : $ Cov(X, Y) = E\{[X-E(X)][Y-E(Y)]\} = E(XY) - E(X)E(Y) $, 当协方差为0是时, 称 $ X, Y $ 不相关
+
+		性质 :
+		\begin{itemize}[leftmargin = 4em]
+			\item $ Cov(X, Y) = Cov(Y, X) $
+			\item $ Cov(X, X) = D(X), Cov(X, c) = 0 $
+			\item $ Cov(aX, bY) = abCov(X, Y) $
+			\item $ Cov(X + Y, Z) = Cov(X, Z) + Cov(Y, Z) $
+			\item $ Cov(a_{1}X + b_{1}Y + c_{1}, a_{2}X + b_{2}Y + c_{2}) = a_{1}a_{2}D(X) + b_{1}b_{2}D(Y) + (a_{1}b_{2} + a_{2}b_{1})Cov(X, Y) $
+			\item $ D(aX + bY + c) = a^{2}D(X) + b^{2}D(Y) + 2abCov(X, Y) $
+		\end{itemize}
+
+		相关系数 : $ \rho_{XY} = \frac{Cov(X, Y)}{\sqrt{D(X)D(Y)}} $
+
+		性质 :
+		\begin{itemize}[leftmargin = 4em]
+			\item $ |\rho_{XY}| \leq 1 $
+			\item $ |\rho_{XY}| = 1 \leftrightarrow \exists a, b, s.t. \; Y = aX + b $
+		\end{itemize}
+
+\end{document}
