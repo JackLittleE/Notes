@@ -1,0 +1,46 @@
+\documentclass[UTF8, 12pt]{ctexart}
+\linespread{2}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	样本 : 同分布, 独立, 也是随机变量, 用大写字母表示
+
+	样本观察值 : 具体的数值, 用小写字母表示
+
+	统计量 : 样本的函数
+	\begin{itemize}[leftmargin = 4em]
+		\item 样本均值 : $ \overline{X} = \frac{1}{n}\sum\limits_{i=1}^{n}X_{i} $
+		\item 样本方差 : $ S^{2} = \frac{1}{n-1}\sum\limits_{i=1}^{n}(X_{i} - \overline{X})^{2} $
+		\item 样本k阶原点矩 : $ A_{k} = \frac{1}{n}\sum_{i=1}^{n}X_{i}^{k} $
+		\item 样本k阶中心矩 : $ B_{k} = \frac{1}{n}\sum_{i=1}^{n}(X_{i} - \overline{X})^{k} $
+		\item $ E[\overline{X}] = E[X], D[\overline{X}] = \frac{D[X]}{n} $
+		\item $ E[S^{2}] = D[X] $
+		\item 次序统计量 : $ X_{(i)} = X_{n} $ 中第 $ i $ 小的样本 
+	\end{itemize}
+
+	抽样分布 : 
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \chi^{2} $ 分布 : 设 $ X_{1}, \cdots X_{n} \overset{iid}{\sim} N(0, 1) $, 则 $ \sum_{i=1}^{n}X_{i}^{2} \sim \chi^{2}(n) $
+		\item t分布 : 设 $ X \sim N(0, 1), Y \sim \chi^{2}(n) $, 则 $ \frac{X}{\sqrt{Y/n}} \sim \frac{N(0, 1)}{\sqrt{\chi^{2}(n)/n}} = t(n) $
+		\item F分布 : 设 $ U \sim \chi^{2}(n_{1}), V \sim \chi^{2}(n_{2}) $, 则 $ \frac{U/n_{1}}{V/n_{2}} \sim \frac{\chi^{2}(n_{1})/n_{1}}{\chi^{2}(n_{2})/n_{2}} = F(n_{1}, n_{2}) $ 
+		\item 设 $ X \sim \chi^{2}(n_{1}), Y \sim \chi^{2}(n_{2}) $, 则 $ X+Y \sim \chi^{2}(n_{1}+n_{2}) $, $ E[X] = n, D[x] = 2n $
+	\end{itemize}
+
+	分位点 : 设 $ X \sim N(0, 1) , \exists Z_{\alpha}, P\{X > Z_{\alpha}\} = \alpha $, 称 $ Z_{\alpha} $ 为标准正态分布的上侧 $ \alpha $ 分位点, $ Z_{\alpha} = -Z_{1-\alpha} $ 
+
+	正态总体的抽样分布, 设 $ X_{1}, \cdots X_{n} \overset{iid}{\sim} N(\mu, \sigma^{2}) $ :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \frac{\overline{X} - \mu}{\sigma/\sqrt{n}} \sim N(0, 1) $
+		\item $ \frac{\overline{X} - \mu}{S/\sqrt{n}} \sim t(n-1) $
+		\item $ \frac{(n-1)S^{2}}{\sigma^{2}} \sim \chi^{2}(n-1) $
+		\item $ \overline{X}, S^{2} $ 相互独立
+	\end{itemize}
+
+\end{document}
