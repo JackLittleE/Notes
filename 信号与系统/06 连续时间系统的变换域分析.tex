@@ -1,0 +1,74 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\renewcommand\parallel{\mathrel{/\mskip-2.5mu/}} % 斜平行号
+
+\begin{document}
+
+	LTI连续时间系统 (输入 $ x_{i}(t) $, 输出 $ y_{i}(t) $):
+	\begin{itemize}[leftmargin = 4em]
+		\item 输入 $ \sum_{i=-\infty}^{+\infty}a_{i}x_{i}(t) $, 输出 $ \sum_{i=-\infty}^{+\infty}a_{i}y_{i}(t) $
+		\item 冲激响应 $ h(t) $, 输入 $ x(t) $ 时, 输出 $ x(t)*h(t) $ 
+	\end{itemize} 
+
+	拉普拉斯变换解微分方程 :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \frac{\mathrm{d}}{\mathrm{d}t}y(t) = sY(s) - y(0^{-}), \frac{\mathrm{d}^{2}}{\mathrm{d}t^{2}}y(t) = s^{2}Y(s) - sy(0^{-}) - y'(0^{-}) $
+		\item 解代数方程, 解得 $ Y(s) = a(s)X(s) + b(s) $
+		\item $ a(s)X(s) $ 是零状态响应, $ b(s) $ 为零状态响应, 输入提供的极点为强迫相应, 系统函数提供的极点为自由响应
+		\item 求拉普拉斯逆变换
+	\end{itemize}
+
+	s域模型(回路) : $ R \leftrightarrow R, L \leftrightarrow sL + Li_{L}(0^{-}), C \leftrightarrow sC - \frac{1}{s}v_{c}(0^{-}) $
+
+	s域模型(节点) : $ R \leftrightarrow R, L \leftrightarrow sL \parallel \frac{1}{s}i_{L}(0^{-}), C \leftrightarrow sC \parallel -Cxv_{c}(0^{-}) $
+
+	系统函数 ： 零状态响应的拉普拉斯变换 / 激励的拉普拉斯变换, 电路图可以划为s域根据分压关系算出来
+
+	稳定系统 : 系统函数收敛域包括虚轴; 因果系统 : 收敛域在右半平面
+
+	暂态响应 : 响应中, 时间趋于无穷时响应为0的部分, $ H(s)X(s) $ 的极点在左半平面的响应; 稳态响应 : 全相应减去暂态响应
+
+	系统函数极点类型 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 原点, 一阶极点 : 恒定
+		\item 实轴, 一阶极点 : 左半平面收敛, 右半平面发散
+		\item 虚轴, 一阶共轭极点 : 等幅振荡
+		\item 左半平面, 一阶共轭极点 : 衰减震荡
+		\item 原点, 二阶极点 : 直线发散
+		\item 复实轴, 二阶极点 : 一次震荡后收敛
+		\item 虚轴, 二阶共轭极点 : 幅度增长的震荡 
+	\end{itemize}
+
+	系统函数的零点只影响幅度和相位, 不影响特性
+
+	频率响应 : LTI稳定系统, 激励为正弦信号, 零状态下稳态响应随着激励的频率变化. 激励信号为 $ e^{j\Omega_{0}t} $, 频响为 $ e^{j\Omega_{0}t}H(j\Omega_{0}) $ 
+
+	频响的矢量表示法 : 圈代表系统函数的零点, 叉代表系统函数的极点, 圆点代表响应的 $ j\Omega_{0} $, 由极点/零点指向圆点
+
+	将 $ |H(j\Omega)| $ 函数最大值的 $ \frac{1}{\sqrt{2}} $ 倍对应的频率称为截止频率, 根据频率分段, 可分为 : 高通, 低通, 带通, 带阻, 全通
+
+	常见的 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 高通 : $ \frac{s}{s+1/RC} $
+		\item 低通 : $ \frac{1/RC}{s+1/RC} $ 
+		\item 全通 : 极点位于左半平面, 零点位于右半平面, 关于虚轴对称, $ \frac{s-1/RC}{s+1/RC} $
+	\end{itemize}
+
+	稳定系统 : 系统函数的极点都在左半平面
+
+	边界稳定系统 : 系统函数有一阶极点在虚轴上, 其他极点都在左半平面
+
+	不稳定系统 : 系统函数有极点在右半平面, 在虚轴上有二阶或以上极点
+	
+	对于一阶二阶系统, 系统函数的分母, 每一项的系数大于0为稳定, 有一项等于0为边界稳定
+
+\end{document}
