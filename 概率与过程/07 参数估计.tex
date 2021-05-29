@@ -1,0 +1,48 @@
+\documentclass[UTF8, 12pt]{ctexart}
+\linespread{2}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	估计量 : 设 $ X_{1}, \cdots, X_{n} \overset{iid}{\sim} X = f(x; \theta) , \theta $ 未知, 若统计量 $ \hat{\theta}(X_{1}, \cdots, X_{n}) $ 可作为参数 $  \theta $ 的一个估计, 则称其为估计量
+
+	点估计 : 用 $ \hat{\theta}(X_{1}, \cdots, X_{n}) $ 估计参数
+	\begin{itemize}[leftmargin = 4em]
+		\item 矩估计 : 用样本k阶矩估计总体k阶矩, 即 $ \frac{1}{n}\sum_{i=1}^{n}X_{i}^{k} $ 估计 $ E(X^{k}) $
+		\item 最大似然估计 : 做似然函数 $ L(\theta) = \prod_{i=1}{n}f(X_{i}; \theta) $, 取对数, 求导, 解方程, 使似然函数最小. 如果似然函数的非零区和参数有关, 则要用其他方法求
+	\end{itemize}
+
+	估计量的标准, 设 $ \hat{\theta} = \hat{\theta}(X_{1}, \cdots, X_{n}), \hat{\theta} \in \Theta $ :
+	\begin{itemize}[leftmargin = 4em]
+		\item 无偏性 : $ E[\hat{\theta}] = \theta $
+		\item 有效性 : $ D[\hat{\theta_{1}}] \leq D[\hat{\theta_{2}}] $, 且 $ \exists\theta \in \Theta $ 使不等号成立, 则 $ \hat{\theta_{1}} $ 比 $ \hat{\theta_{2}} $ 有效
+		\item 相合性(一致性) : $ \forall\epsilon > 0, \lim\limits_{n \to +\infty}P\{|\hat{\theta_{n}} - \theta| > \epsilon\} = 0 $
+	\end{itemize}
+
+	区间估计 : 由样本确定的两个统计量 $ \theta_{1}, \theta_{2} $, 使得 $ P\{\theta_{1} < \theta < \theta_{2}\} = 1-\alpha $, 称区间 $ (\theta_{1}, \theta_{2}) $ 是 $ \theta $ 置信度为 $ \alpha $ 的置信区间
+	
+	若 $ X_{1}, \cdots, X_{N} \overset{iid}{\sim} N(\mu, \sigma^{2}) $ :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ Z = \frac{\overline{X}-\mu}{\sigma/\sqrt{n}} \sim N(0, 1) $
+		\item $ t = \frac{\overline{X}-\mu}{S/\sqrt{n}} \sim t(n-1) $ 
+		\item $ \chi^{2} = \frac{(n-1)S^{2}}{\sigma^{2}} \sim \chi^{2}(n-1) $
+		\item $ \overline{X}, S $ 相互独立
+		\item $ S_{w} = \frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1}+n_{2}-2} $ 称为混合样本方差
+	\end{itemize}
+
+	若 $ X_{1}, \cdots, X_{N_{1}} \overset{iid}{\sim} N(\mu_{1}, \sigma^{2}_{1}), Y_{1}, \cdots, Y_{N_{2}} \overset{iid}{\sim} N(\mu_{2}, \sigma^{2}_{2}) $, 给定 $ \alpha $ :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \sigma^{2}_{1} $ 已知, 求 $ \mu_{1} $ : $ P\{-z_{\alpha/2} < Z_{1} < z_{\alpha/2}\} = 1 - \alpha $
+		\item $ \sigma^{2}_{1} $ 未知, 求 $ \mu_{1} $ : $ P\{-t_{\alpha/2} < t_{1} < t_{\alpha/2}\} = 1 - \alpha $
+		\item $ \sigma^{2}_{1} $ 未知, 求 $ \sigma^{2}_{1} $ : $ P\{-\chi^{2}_{1-\alpha/2} < \chi^{2}_{1} < \chi^{2}_{\alpha/2}\} = 1 - \alpha $
+		\item $ \sigma^{2}_{1} = \sigma^{2}_{2} $, 求 $ \mu_{1} - \mu_{2} $ : $ P\{-t_{\alpha/2}(n_{1}+n_{2}-2) < \frac{\overline{X}-\overline{Y}-(\mu_{1}-\mu_{2})}{S_{w}\sqrt{1/n_{1}+1/n_{2}}} < t_{\alpha/2}(n_{1}+n_{2}-2)\} = 1 - \alpha $
+		\item 求 $ \frac{\sigma^{2}_{1}}{\sigma^{2}_{2}} $ : $ P\{F_{1-\alpha/2}(n_{1}-1, n_{2}-1) < \frac{S_{1}^{2}/\sigma^{2}_{1}}{S_{2}^{2}/\sigma^{2}_{2}} < F_{\alpha/2}(n_{1}-1, n_{2}-1) \} $
+	\end{itemize}
+
+\end{document}
