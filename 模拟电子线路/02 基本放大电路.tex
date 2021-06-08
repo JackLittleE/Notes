@@ -182,7 +182,7 @@
 
 	分析 :
 	\begin{itemize}[leftmargin = 4em]
-		\item 直流 : $ U_{GS} = \frac{R_{g1}}{R_{g1}+R_{g2}}V_{DD} - I_{D}R, I_{D} = I_{DSS}(1-\frac{U_{GS}}{U_{P}})^{2}, U_{DS} = V_{DD} - I_{D}(R_{d}+R) $
+		\item 直流 : $ U_{GS} = \frac{R_{g2}}{R_{g1}+R_{g2}}V_{DD} - I_{D}R, I_{D} = I_{DSS}(1-\frac{U_{GS}}{U_{P}})^{2}, U_{DS} = V_{DD} - I_{D}(R_{d}+R) $
 		\item 交流 : $ \dot{A} = -g_{m}(R_{d} \parallel R_{L}), R_{i} = R_{g3} + (R_{g1} \parallel R_{g2}), R_{o} = R_{d} $
 	\end{itemize}
 
@@ -201,7 +201,7 @@
 
 	分析 :
 	\begin{itemize}[leftmargin = 4em]
-		\item 直流 : $ U_{GS} = \frac{R_{g1}}{R_{g1}+R_{g2}}V_{DD} - I_{D}R, I_{D} = I_{DSS}(1-\frac{U_{GS}}{U_{P}})^{2}, U_{DS} = V_{DD} - I_{D}R $
+		\item 直流 : $ U_{GS} = \frac{R_{g2}}{R_{g1}+R_{g2}}V_{DD} - I_{D}R, I_{D} = I_{DSS}(1-\frac{U_{GS}}{U_{P}})^{2}, U_{DS} = V_{DD} - I_{D}R $
 		\item 交流 : $ \dot{A} = \frac{g_{m}(R \parallel R_{L})}{1+g_{m}(R \parallel R_{L})} \approx 1, R_{i} = R_{g3} + (R_{g1} \parallel R_{g2}), R_{o} = R \parallel \frac{1}{g_{m}} $
 	\end{itemize}
 
