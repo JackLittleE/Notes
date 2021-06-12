@@ -91,7 +91,7 @@
 
 	电路图 :
 
-	\includegraphics[]{03/恒流源式差分放大电路电路图.png}
+	\includegraphics[scale = 0.4]{03/恒流源式差分放大电路电路图.png}
 
 	分析 :
 	\begin{itemize}[leftmargin = 4em]
@@ -99,15 +99,50 @@
 		\item 改进 : E点加调零电位器, 场效应管
 	\end{itemize}
 
+	~
+
 	\noindent
 	电流源电路 :
 
 	基本电流源($ T_{1} $ 的负载变化, $ I_{C1} = I_{R} $ 保持不变) :
 
-	\includegraphics[]{03/基本电流源电路图.png}
+	\includegraphics[scale = 0.4]{03/基本电流源电路图.png}
 
 	比例电流源($ I_{C1} \approx \frac{R_{e0}}{R_{e1}}I_{R} $) :
 
-	\includegraphics[]{03/比例电流源电路图.png}
+	\includegraphics[scale = 0.4]{03/比例电流源电路图.png}
+
+	~
+
+	\noindent
+	集成运放性能指标 :
+
+	静态指标 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 输入失调电压 ：输入电压为0时,  为使输出电压为0, 在输入端加的补偿电压
+		\item 输入失调电流 ：输入电压为0时,  差分输入级的差分对管基极电流之差
+		\item 输入偏置电流 ： 运放两个输入端的偏置电流的平均值
+		\item 输入失调电压温漂、输入失调电流温漂 ： 规定的温度范围内, 输入失调电压随温度的变化量与温度的变化量之比
+		\item 最大差模输入电压 ：输入端能承受的最大差模输入电压,  超过此电压会反向击穿
+		\item 最大共模输入电压 ：正常工作情况下共模输入电压的允许范围, 超过此电压会失去共模抑制能力
+	\end{itemize}
+
+	动态指标 ：
+	\begin{itemize}[leftmargin = 4em]
+		\item 开环差模放大倍数 ：无外加反馈的情况下,  输出电压变化量与输入电压变化量之比
+		\item 差模输入电阻, 共模抑制比 : 和差分电路一样
+		\item -3dB带宽 : 差模电压放大倍数在高频段下降3dB所定义的带宽
+		\item 单位增益带宽 : 开环差模放大倍数下降到1时对应的频率
+	\end{itemize}
+
+	理想运放条件 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 开环差模放大倍数无穷大
+		\item 差模输入电阻无穷大
+		\item 输出电阻为0
+		\item -3dB带宽足够宽
+		\item 共模抑制比足够大
+	\end{itemize}
+	
 
 \end{document}
