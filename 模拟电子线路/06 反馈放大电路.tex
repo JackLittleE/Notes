@@ -1,0 +1,84 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\usepackage{graphicx}
+
+\begin{document}
+
+	\noindent
+	基本概念 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 判断 : 将输出回路和输入回路相连, 并影响了净输入
+		\item 正反馈和负反馈; 判断 : 在放大电路加一个瞬时对地为+的信号, 一直看到反馈那一点, 得到该点相位, 在沿着反馈信号看回来, 判断反馈类型(输入和反馈在同一点, 极性相同为正; 输入和反馈在两点, 极性相反为正); 三极管的极性变化 : be+c-; 场效应管 : gs+d-
+		\item 直流反馈 : 直流通路的反馈; 交流反馈 : 交流通路的反馈; 两个都有就说交流
+		\item 电压反馈 : 反馈信号来自输出电压, 并和电压成正比; 电流反馈同理; 判断 : 短路负载后反馈消失是交流反馈, 反馈从输出端引出是交流反馈
+		\item 串联反馈 : 在输入端, 反馈网络与放大电路串联连接; 并联反馈同理; 判断 : 短路信号源, 反馈信号仍能加到放大电路两端是串联反馈
+		\item 本级反馈 : 反馈只在一级放大器; 级间反馈 : 反馈在两级放大电路上
+	\end{itemize}
+
+	~
+
+	\noindent
+	负反馈的四种组态 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 电压串联负反馈 : 稳定输入电压
+		\item 电压并联负反馈 : 电压/电流转化
+		\item 电流并联负反馈 : 稳定输出电流
+		\item 电流串联负反馈 : 电流/电压转化
+	\end{itemize}
+
+	~
+
+	\noindent
+	闭环放大倍数的一般形式 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 放大电路输入 $ x'_{i} $, 反馈回路输出 $ x_{f} $, 总输入 $ x_{i} $, 总输出 $ x_{o} $
+		\item 放大电路的放大倍数 $ \dot{A} = \frac{x_{o}}{x'_{i}} $, 反馈网络的反馈系数 $ \dot{F} = \frac{x_{f}}{x_{o}} $, 环路放大倍数 $ \dot{A}\dot{F} = \frac{x_{f}}{x'_{i}} $
+		\item 闭环放大倍数 $ \dot{A}_{f} = \frac{x_{o}}{x_{i}} = \frac{\dot{A}}{1+\dot{A}\dot{F}} $, $ 1+\dot{A}\dot{F} $ 称为反馈深度, $ \dot{A}\dot{F} $ 称为环路增益
+		\item $ 1+\dot{A}\dot{F} > 1 $ 时, 负反馈; $ 1+\dot{A}\dot{F} >> 1 $ 时, 深度负反馈, 此时 $ \dot{A}_{f} \approx \frac{1}{\dot{F}} $ 
+		\item $ 1+\dot{A}\dot{F} < 1 $ 时, 正反馈; $ 1+\dot{A}\dot{F} = 0 $ 时, 自激振荡
+	\end{itemize}
+
+	~
+
+	\noindent
+	反馈作用 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 直流 : 稳定静态工作点
+		\item 交流 : 稳定放大倍数, 改变输入输出电阻, 扩展频带, 减小非线性失真
+		\item 稳定放大倍数 : $ \frac{\mathrm{d}A_{f}}{\mathrm{d}A} = \frac{1}{1+AF}\frac{\mathrm{d}A}{A} $, $ A_{f} $ 比 $ A $ 变化小
+		\item 影响输入电阻 : 串联负反馈 $ R_{if} = (1+\dot{A}\dot{F})R_{i} $, 并联负反馈 $ R_{if} = \frac{1}{1+\dot{A}\dot{F}}R_{i} $
+		\item 影响输出电阻 : 电压负反馈 $ R_{of} = \frac{1}{1+\dot{A}\dot{F}}R_{o} $, 电流负反馈 $ R_{of} = (1+\dot{A}\dot{F})R_{o} $
+		\item 增益下降, 频带变宽
+	\end{itemize}
+
+	~
+
+	\noindent
+	深度负反馈放大倍数计算 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 输入量近似等于反馈量, 净输入量近似为0, 虚短虚断
+		\item 电阻估算 : 增大输入/输出电阻-看做无穷大, 其他的看做0
+	\end{itemize}
+
+	~
+
+	\noindent
+	自激振荡条件 :  $ \dot{A}\dot{F} = -1 $, 放大电路和反馈电路上相位改变之和为 $ (2n+1)\pi $ ,起振条件为 $ |\dot{A}\dot{F}| > 1 $
+
+	画出 $ \dot{A}\dot{F} $ 的波特图, 找到两个频率 $ f_{c} = 20\lg|\dot{A}\dot{F}| = 0, f_{o} = \varphi_{AF} = -180 $, $ f_{c} > f_{o} $ 自激
+
+	消除自激振荡 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 减小反馈系数
+		\item 电容校正(严重减小通频带) : 在最低的上线频率所在回路增加电容; /RC补偿电路 : 在 $ \dot{A} $ 的表达式中引入一个零点, 并与第一个极点抵消
+		\item 超前补偿 : 在环路增益0dB时, 改变相位使其超前
+	\end{itemize}
+
+\end{document}
