@@ -1,0 +1,53 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	无失真传输 :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ y(t) = Kx(t-t_{0}) $
+		\item 系统函数 : $ h(t) = K\delta(t-t_{0}) $
+		\item 频域响应 : $ H(j\Omega) = Ke^{-j\Omega t_{0}} $
+	\end{itemize}
+
+	理想低通滤波器 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 频率响应 : $ H(j\Omega) = \begin{cases} e^{-j\Omega t_{0}},& |\Omega| < \Omega_{c} \\ 0,& |\Omega| > \Omega_{c} \end{cases} $
+		\item 非因果系统, 不能实现
+		\item 冲激响应 : $ h(t) = \frac{\Omega_{c}}{\pi}\operatorname{Sa}(\Omega_{c}(t-t_{0})) = \frac{\sin[\Omega_{c}(t-t_{0})]}{\pi(t-t_{0})} $
+		\item 阶跃响应 : $ g(t) = \frac{\Omega_{c}}{\pi} \int_{-\infty}^{t}\frac{\sin[\Omega_{c}(t-t_{0})]}{t-t_{0}} = \frac{1}{2} + \frac{1}{\pi}\operatorname{Si}[\Omega_{c}(t-t_{0})] $
+		\item 输入 $ x(t) = u(t) - u(t-\tau) $, 输出 $ y(t) = \frac{1}{\pi}(\operatorname{Si}(\Omega_{c}(t-t_{0}))-\operatorname{Si}(\Omega_{c}(t-t_{0}-\tau))) $
+	\end{itemize}
+
+	信号的采样 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 数学表示 : $ f_{s}(t) = f(t)p(t) $, $ p(t) $ 为采样脉冲
+		\item $ p(t) = \sum\limits_{n=-\infty}^{+\infty}\delta(t-nT_{s}) $, $ T_{s} $ 称为采样周期
+		\item $ F_{s}(j\Omega) = \frac{1}{T_{s}} \sum\limits_{n=-\infty}^{+\infty}F(j(\Omega-\Omega_{s})) $
+		\item 采样定理 : 最低允许的采样率(奈奎斯特采样率), 为信号的最高频率(奈奎斯特频率)的2倍
+		\item 采样信号恢复原信号 : 将 $ f_{s}(t) $ 通过一个最高频率为 $ \frac{1}{2}\Omega_{s} $, 幅值为 $ T_{s} $ 的理想低通滤波器, 
+		$ y(t) = h(t)*f_{s}(t) = \sum\limits_{n=-\infty}^{+\infty}f(nT_{s})\operatorname{Sa}(\Omega_{s}t-n\pi) $
+		\item 采样信号为周期矩形脉冲信号, $ p(t) = \sum\limits_{n=-\infty}^{+\infty}u(t+\frac{\tau}{2}-nT_{s})-u(t-\frac{\tau}{2}-nT_{s}) $, \\
+		$ F_{s}(j\Omega) = \frac{\tau}{T_{s}}\sum\limits_{n=-\infty}^{+\infty}\operatorname{Sa}(\frac{n\Omega_{s}\tau}{2})F(j(\Omega-\Omega_{s})) $
+	\end{itemize}
+
+	幅度调制, 解调, 脉冲调制 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 调幅 : $ s(t) = g(t)c(t) = g(t)\cos(\Omega_{c}) $, 频域 : $ S(j\Omega) = \frac{1}{2}(G(j(\Omega+\Omega_{c}))+G(j(\Omega-\Omega_{c}))) $, 条件 $ \Omega_{c} > \Omega_{m} $
+		\item 解调 : $ w(t) = s(t)c(t), W(j\Omega) = \frac{1}{2}G(j\Omega) + \frac{1}{4}(G(j(\Omega+2\Omega_{c}))+G(j(\Omega-2\Omega_{c}))) $, 选用幅值为2, 最高频率范围在 $ (\Omega_{m}, 2\Omega_{c}-\Omega_{m}) $ 之间的理想低通滤波器
+		\item 限制 : $ g(t) < 0 $ 出现过调制失真, 解决方法 : 给 $ g(t) $ 加上直流分量, 让其恒大于0
+		\item 脉冲幅度调制 : 载波信号是矩形脉冲串, $ c(t) = \sum\limits_{n=-\infty}^{+\infty}u(t+\frac{\tau}{2}-nT_{p})-u(t-\frac{\tau}{2}-nT_{p}) $, 条件 : $ \Omega_{p} > 2\Omega_{m} $
+		\item 解调 : 通过幅度为 $ \frac{T_{p}}{\tau} $, 最高频率范围在 $ (\Omega_{m}, \Omega_{p}-\Omega_{m}) $ 之间的理想低通滤波器
+		\item 时分多路复用 : 调整矩形脉冲的相位, 使各个脉冲错开, 分别乘上多个输入信号, 一起传输
+		\item 频分多路复用 : 使用不同频率的余弦波, 分别乘上多个输入信号调幅, 加在一起传输; 使用带通滤波器提取某一频率, 再解调
+	\end{itemize}
+
+\end{document}
