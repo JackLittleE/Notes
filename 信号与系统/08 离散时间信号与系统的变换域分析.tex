@@ -1,0 +1,57 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	单边z变换 : $ X(Z) = \mathscr{Z}[x[n]] = \sum\limits_{n=0}^{+\infty}x[n]z^{-n} $
+
+	双边z变换 : $ X(Z) = \mathscr{Z}[x[n]] = \sum\limits_{n=-\infty}^{+\infty}x[n]z^{-n} $
+
+	收敛域 : 级数的收敛域(比值/根治判定); 右边序列的收敛域为大于, 左边序列为小于
+
+	如果离散序列 $ x[n] $ 是采样周期 $ T $ 对连续信号 $ x(t) $ 的等间隔采样样本 $ x[n] = x(nT) $, 则 $ X(z)|_{z=e^{sT}} = X_{s}(s) $
+
+	z逆变换 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 部分分式展开法 : 将 $ \frac{X(z)}{z} $ 展开成真分式的和, 右侧乘 $ z $, 求逆变换
+		\item 留数法 : $ x[n] = \frac{1}{2\pi j} \oint_{C}X(z)z^{n-1}\mathrm{d}z $, $ C $ 为包围 $ X(z)z^{n-1} $ 所有极点的逆时针闭合曲线
+		\item 长除法 : $ X(z) = \frac{B(z)}{A(z)} $, 如果是右边序列, 按照z的降幂(左边序列, 升幂), 利用长除法求得
+	\end{itemize}
+
+	基本性质 :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ g[n] = x[-n] \leftrightarrow G(z) = X(z^{-1}) $
+		\item 双边z变换 : $ g[n] = x[n-m] \leftrightarrow G(z) = z^{-m}X(z) $
+		\item 单边z变换 : $ g[n] = x[n-m] \leftrightarrow G(z) = z^{-m}(X(z)+\sum\limits_{k=-m}^{-1}x[k]z^{-k}) $
+		\item $ g[n] = x[n]-x[n-1] \leftrightarrow G(z) = X(z)(1-z^{-1}) $
+		\item $ g[n] = \sum\limits_{m=-\infty}^{n}x[m] \leftrightarrow G(z) = \frac{1}{1-z^{-1}}X(z) $
+		\item $ g[n] = nx[n] \leftrightarrow G(z) = -z\frac{\mathrm{d}X(z)}{\mathrm{d}z} $
+		\item $ g[n] = a^{n}x[n] \leftrightarrow G(z) = X(\frac{z}{a}) $
+		\item $ g[n] = \overline{x[n]} \leftrightarrow G(z) = \overline{X(\overline{z})} $
+		\item $ g[n] = x_{1}[n]*x_{2}[n] \leftrightarrow G(z) = X_{1}(z)X_{2}(z) $
+		\item $ \sum\limits_{n=-\infty}^{+\infty}x[n]\overline{y[n]} = \frac{1}{2\pi j} \oint_{C}X(z)\overline{Y(\overline{z})}\frac{\mathrm{d}z}{z} $
+		\item $ x[0] = \lim\limits_{n \to +\infty} X(z) $, 条件 : 有理真分式
+		\item $ x[\infty] = \lim\limits_{z \to 1}[(z-1)X(z)] $, 条件 : 极点都在单位圆内部
+	\end{itemize}
+
+	傅里叶变换 : $ X(e^{j\omega}) = \sum\limits_{n=-\infty}^{+\infty}x[n]e^{-j\omega n} = X(z)|_{z=j\omega} $
+
+	傅里叶逆变换 : $ x[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi}X(e^{j\omega})e^{j\omega n}\mathrm{d}\omega $
+
+	系统函数相同, 收敛域不同, 结果也不同; 输入为 $ x[n] = a^{n} $, 输出为 $ y[n] = x[n]H(z)|_{z=a} $
+
+	因果性 : 收敛域为大于, 分子的最高次方不高于分母的
+
+	稳定性 : 收敛域包括单位圆
+
+	由零极点图知 : 原点处的零点/极点不影响幅频特性, 影响相频特性; 零点和极点的乘积为1则系统是全通系统
+
+\end{document}
