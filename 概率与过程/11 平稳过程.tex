@@ -1,0 +1,56 @@
+\documentclass[UTF8, 12pt]{ctexart}
+\linespread{2}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\DeclareMathOperator*{\Lim}{l.i.m.} % 均方收敛
+
+\begin{document}
+
+	严平稳过程 : $ X(t), X(t+h) $ 有相同的分布函数
+
+	宽平稳过程 : 二阶矩过程, 均值函数为常数, 相关函数为时间差的函数, $ R_{X}(t, t+\tau) = R_{X}(\tau) $
+
+	性质 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 均值函数, 均方差函数, 方差函数都为常数; 相关函数, 协方差函数为时间差的函数
+		\item $ R_{X}(0) = \Psi_{X}^{2} \geq 0 $, $ R_{X}(\tau) = R_{X}(-\tau) $, $ |R_{X}(\tau)| \leq R_{X}(0) $, $ R_{X}(\tau) $ 为非负定的
+		\item $ R_{XY}(t, t+\tau) = R_{XY}(\tau) $ , 称 $ X(t), Y(t) $ 为联合平稳的
+	\end{itemize}
+
+	均方极限 : $ \lim\limits_{n\to+\infty}E[(X_{n}-X)^{2}] = 0 $, 称 $ X_{n} $ 均方收敛于 $ X $, 记作 $ \Lim\limits_{n\to+\infty}X_{n} = X $
+
+	均方可积 : $ \Lim\limits_{a\to-\infty\\b\to+\infty}\int_{a}^{b}X(t)\mathrm{d}t $ 存在
+
+	性质 :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \lim\limits_{n\to+\infty}E[X_{n}] = E[\Lim\limits_{n\to+\infty}]X_{n} $
+		\item $ E[XY] = \lim E[X_{n}Y_{m}] $
+		\item 均方极限线性可加
+		\item $ E[\int_{a}^{b}X(t)\mathrm{d}t] = \int_{a}^{b}E[X(t)]\mathrm{d}t $
+	\end{itemize}
+
+	时间均值 : $ <X(t)> = \Lim\limits_{T\to+\infty}\frac{1}{2T}\int_{-T}^{T}X(t)\mathrm{d}t $
+
+	时间相关函数 : $ <X(t)X(t+\tau)> = \Lim\limits_{T\to+\infty}\frac{1}{2T}\int_{-T}^{T}X(t)X(t+\tau)\mathrm{d}t $ 
+
+	$ <X(t)> = E[X(t)] $, 称 $ X(t) $ 的均值具有各态历经性; $ <X(t)X(t+\tau)> = E[X(t)X(t+\tau)] $, 称 $ X(t) $ 的自相关函数具有各态历经性
+
+	均值具有各态历经性的充要条件 : $ \lim\limits_{T\to+\infty}\frac{1}{T}\int_{0}^{2T}(1-\frac{\tau}{2T})C_{X}(\tau)\mathrm{d}\tau = 0 $
+
+	自相关函数具有各态历经性的充要条件 : $ \lim\limits_{T\to+\infty}\frac{1}{T}\int_{0}^{2T}(1-\frac{\tau}{2T})[B(\tau)-R_{X}^{2}(t)]\mathrm{d}\tau = 0 $, $ B(\tau) = E[X(t+\tau+\tau_{1})X(t+\tau)X(t+\tau_{1})X(t)] $
+
+	平稳过程 $ X(t) $, 平均功率 : $ \lim\limits_{T\to+\infty}\frac{1}{2T}E[\int_{-T}^{T}X^{2}(t)\mathrm{d}t] $; 功率谱密度 : $ S_{X}(\omega) = \lim\limits_{T\to+\infty}\frac{1}{2T}|F_{X}(\omega, T)|^{2} $
+
+	性质 :
+	\begin{itemize}[leftmargin = 4em]
+		\item $ S_{X}(\omega) $ 是非负, 实的偶函数
+		\item $ S_{X}(\omega), R_{X}(\tau)$ 是傅里叶变换对
+	\end{itemize}
+
+\end{document}
