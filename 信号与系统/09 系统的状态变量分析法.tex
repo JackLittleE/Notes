@@ -1,0 +1,34 @@
+\documentclass[UTF8, 12pt]{ctexart}
+
+\usepackage{amsmath}
+
+\usepackage{mathrsfs}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	设系统有k个状态变量 $ \lambda $, m个输入信号 $ x $, r个输出信号 $ y $
+
+	状态方程 : $ [\dot{\lambda}(t)]_{k*1} = [A]_{k*k}[\lambda(t)]_{k*1} + [B]_{k*m}[x(t)]_{m*k} $ (离散将 $ \dot{\lambda} $ 换成 $ \lambda[n+1] $)
+
+	输出方程 : $ [y(t)]_{r*1} = [C]_{r*k}[\lambda]_{k*1} + [D]_{r*m}[X]_{m*1} $
+
+	基本步骤 : 确定状态变量的个数(独立电感电容个数), 选择状态变量(电感的电流, 电容的电压), 依照KVL和KCL写微分方程, 化简
+
+	直接型 : 根据系统函数画状态方程($ s^{-1} $ 的多项式); 级联型 : 将系统函数化为几项的乘积($ s_{-1} $ 的多项式); 并联型 : 化为几项的和($ s $ 的多项式)
+
+	对状态函数取拉普拉斯变换(离散取z变换同理) : 
+		$
+		\begin{cases} 
+			[\Gamma(s)] = (s[I]-[A])^{-1}[\lambda(0^{-})] + (s[I]-[A])^{-1}[B][X(s)] \\
+			[Y(s)] = [C](s[I]-[A])^{-1}[\lambda(0^{-})] + ([C](s[I]-[A])^{-1}[B]+[D][X(s)])
+		\end{cases} 
+		$
+	
+	稳定性 : 连续 : $ det(s[I]-[A]]) = 0 $ 的根在左半平面; 离散 : $ det(z[I]-[A]) = 0 $ 的根在单位圆内
+
+\end{document}
