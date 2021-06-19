@@ -1,0 +1,57 @@
+\documentclass[UTF8, 12pt]{ctexart}
+\linespread{2}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{a4paper, scale = 0.9} % a4纸, 版心占页面长度的比例为0.9
+
+\usepackage{enumitem} % itemize, 列表
+
+\begin{document}
+
+	随机过程的定义 : $ \{X(\omega, t) : t \in T, \omega \in \Omega\} $, 固定 $ t $, $ X(\omega, t) $ 是随机变量; 固定 $ \omega $, $ X(\omega, t) $ 是普通函数
+
+	统计描述, 数字特征 :
+	\begin{itemize}[leftmargin = 4em]
+		\item 分布函数 : $ F(x; t) = P\{X(t) \leq x\} $
+		\item 均值函数 : $ \mu_{X}(t) = E[X(t)] $
+		\item 均方值函数 : $ \Psi_{X}^{2}(t) = E[X^{2}(t)] $
+		\item 方差函数 : $ D_{X}(t) = E[(X(t)-\mu_{X}(t))^{2}] = \Psi_{X}^{2}(t) - [\mu_{X}(t)]^{2} $
+		\item 相关函数 : $ R_{X}(t_{1}, t_{2}) = E[X(t_{1}t_{2})] $
+		\item 协方差函数 : $ C_{X}(t_{1}, t_{2}) = E[(X(t_{1}-\mu(t_{1}))(X(t_{2})-\mu(t_{2}))] $
+		\item $ \Psi_{X}^{2}(t) = R_{X}(t, t) $, $ C_{X}(t_{1}, t_{2}) = R_{X}(t_{1}, t_{2})-\mu_{X}(t_{1})\mu_{X}(t_{2}) $
+	\end{itemize}
+
+	例子 : $ X(t) = a\cos(\omega t + \theta), \theta \sim U(0, 2\pi) $
+	\begin{itemize}[leftmargin = 4em]
+		\item $ \mu_{X}(t) = E[a\cos(\omega t + \theta)] = \int_{0}^{2\pi}a\cos(\omega t + \theta)\frac{1}{2\pi}\mathrm{d}\theta = 0 $
+		\item $ R_{X}(t_{1}, t_{2}) = a^{2}\int_{0}^{2\pi}\cos(\omega t_{1} + theta)\cos(\omega t_{2} + \theta)\frac{1}{2\pi}\mathrm{d}\theta = \frac{a^{2}}{2}\cos\omega(t_{2}-t_{1}) $
+		\item $ C_{X} = \frac{a^{2}}{2}\cos\omega(t_{2}-t_{1}) $
+	\end{itemize}
+
+	常见过程 : 
+	\begin{itemize}[leftmargin = 4em]
+		\item 二阶矩过程 : $ \forall t \in T $, 过程 $ \{X(t), t \in T\} $ 的二阶矩 $ E[X^{2}(t)] $ 都存在, 称这个过程为二阶矩过程
+		\item 独立增量过程 : 过程 $ \{X(t), t \geq 0\} $对任意时刻 $ 0 \leq t_{1} \leq \dots \leq t_{n} $, $ X(t_{1})-X(t_{0}), \dots, X(t_{n})-X(t_{n-1}) $ 独立, 称该过程为独立增量过程
+		\item 平稳过程 : $ X(t+h)-X(s+h) $ 与 $ X(t)-X(s) $ 有相同的分布
+		\item 正态过程 : 过程 $ \{X(t), t \in T\} $ 的每一个有限维分布都是正态分布, \\
+		即 $ t_{1}, \dots t_{n} \in T $, $ (X(t_{1}), \dots, X(t_{n})) $ 为正态分布
+		\item 证明正态过程 :  证明 $ Z = \sum\limits_{i=1}^{n}a_{i}X(t_{i}) $ 服从正态分布
+		\item 维纳过程 : 过程 $ \{X(t), t \geq 0\} $具有独立增量, $ X(t)-X(s) \sim N(0, \sigma^{2}(t-s)) $, $ X(0) = 0 $; $ \sigma = 1 $ 时称为标准布朗运动
+		\item 计数过程 : 过程 $ \{X(t), t \geq 0\} $ 表示zai时间t内事件出现的次数
+		\item 泊松过程 : 计数过程, $ X(t)=0 $, 独立增量过程, $ P\{N(s+t)-N(s)=k\} = \frac{(\lambda t)^{k}}{k!}e^{-\lambda t} $
+	\end{itemize}
+
+	马尔科夫链 : 
+	\begin{itemize}[leftmargin = 4em]
+		\item 设 $ X(n), n = 0, 1, \dots $ 为随机序列, 若对于任意状态 $ i_{1}, \dots, i_{n-1}, j $ 和任意的离散时间, \\
+		有 $ P\{X_{n+1}=j|X_{n}=i, X_{n-1}=i_{n-1}, \dots, X_{1}=i_{1}\} = P\{X_{n+1}=j|X_{n}=i\} $, 称该过程为马尔科夫链
+		\item 当概率 $ P_{ij}(n) = P\{X_{m+n}=j|X_{m}=i\} $ 与 $ m $ 无关时, 称转移概率有平稳性, 马氏链为齐次的
+		\item 齐次马氏链的m步转移概率排成矩阵 $ \mathbf{P}(n) = P_{ij}(n) $, 称作n步转移概率矩阵, 记 $ \mathbf{P} = \mathbf{P}(1) $
+		\item 性质 : $ P_{ij}(n) \geq 0 $, $ \sum\limits_{j} P_{ij}(n) = 1 $, $ \mathbf{P}(m+n) = \mathbf{P}(m)\mathbf{P}(n) $, 即 $ \mathbf{P}(n) = \mathbf{P}^{n} $
+		\item 若对所有状态, $ \lim\limits_{n \to \infty}P_{ij}(n) = \pi_{j} $, $ \sum\limits_{j}\pi_{j} = 1 $, 称 $ \pi = (\pi_{1}, \dots, \pi_{n}) $ 为 $ X_{n} $ 的极限分布
+		\item 若状态空间有限, 且存在m使得 $ P_{ij}(m) > 0 $, 则 $ \pi $ 是满足方程组 $ \pi = \pi\mathbf{P}, \sum\limits_{j}\pi_{j} = 1 $ 的唯一解
+	\end{itemize}
+
+\end{document}
